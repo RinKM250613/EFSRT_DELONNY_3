@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Lista.ProveedorLista>
+
+@{
+    ViewBag.Title = "MantLstProveedor";
+}
+
+<h2>MantLstProveedor</h2>
+
+<p>
+    @Html.ActionLink("Ingresar nuevo Proveedor", "CrearProveedor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codDistrito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fono)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codDistrito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fono)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "ActualizarProveedor", new {  id=item.codigo  }) |
+            @Html.ActionLink("Detalles", "DetallesProveedor", new {  id=item.codigo  }) |
+            @Html.ActionLink("Eliminar", "EliminarProveedor", new {  id=item.codigo  })
+        </td>
+    </tr>
+}
+
+</table>

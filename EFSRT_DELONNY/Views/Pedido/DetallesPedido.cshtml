@@ -1,0 +1,106 @@
+﻿@model Dominio.Entidad.Negocio.Entidad.Pedido
+
+@{
+    ViewBag.Title = "DetallesPedido";
+}
+
+<h2>DetallesPedido</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codEmpleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecEnvio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecEnvio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estadoEnvio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadoEnvio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.direccionDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.direccionDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ciudadDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciudadDestino)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Actualizar", "ActualizarPedido", new { id = Model.codPedido }) |
+    @Html.ActionLink("Volver al Listado", "ListaPedido")
+</p>

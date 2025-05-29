@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Lista.ProductoLista>
+
+@{
+    ViewBag.Title = "MantLstProductos";
+}
+
+<h2>MantLstProductos</h2>
+
+<p>
+    @Html.ActionLink("Registrar Producto", "CrearProducto")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActualizarProducto", new {  id=item.codigo }) |
+            @Html.ActionLink("Ver", "DetallesProducto", new { id = item.codigo }) |
+            @Html.ActionLink("Eliminar", "EliminarProducto", new { id = item.codigo })
+        </td>
+    </tr>
+}
+
+</table>

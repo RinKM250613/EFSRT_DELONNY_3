@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Lista.PedidoLista>
+
+@{
+    ViewBag.Title = "ListaPedido";
+}
+
+<h2>ListaPedido</h2>
+
+<p>
+    @Html.ActionLink("Registrar Pedido", "CrearPedido")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecEntrega)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecEnvio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estadoEnvio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ciudadDestino)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecEntrega)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estadoEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudadDestino)
+        </td>
+        <td>
+            @Html.ActionLink("Actualizar", "ActualizarPedido", new {  id=item.codPedido  }) |
+            @Html.ActionLink("Detalles", "DetallesPedido", new { id = item.codPedido }) |
+            @Html.ActionLink("Eliminar", "EliminarPedido", new { id = item.codPedido })
+        </td>
+    </tr>
+}
+
+</table>
