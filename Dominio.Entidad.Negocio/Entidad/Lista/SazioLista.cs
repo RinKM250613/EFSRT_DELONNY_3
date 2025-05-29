@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidad.Negocio.Entidad.Lista
 {
-    internal class RebecaGAAAAA
+    internal class SazioLista
     {
     }
 }
