@@ -206,5 +206,47 @@ namespace Infraestructura.SQL.Negocios
             }
             return tempo;
         }
+
+        public IEnumerable<Producto> ComboCategoriaStock(Producto registro) 
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            List<Producto> tempo = new List<Producto>();
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_REPORTE_STOCK", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CodCategoria", registro.codCategoria);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tempo.Add(new Producto()
+                            {
+                                codigo = reader.GetString(0),
+                                nombre = reader.GetString(1),
+                                stock = reader.GetInt32(2),
+                                precio = reader.GetDecimal(3),
+                                codCategoria = reader.GetString(4),
+                                descripcion = reader.GetString(5)
+                               
+                            });
+                        }
+                    }
+                }
+            }
+
+            return tempo;
+
+
+        }
+
+
+
+
+
+
     }
 }

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Producto>
+
+@{
+    Layout = null; 
+    ViewBag.Title = "DescargarPDFStock";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de Stock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10pt;
+            margin-top: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Reporte de Stock de Productos</h2>
+
+    <table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().codigo)</th>
+            <th>@Html.DisplayNameFor(model => model.First().nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.First().codCategoria)</th>
+            <th>@Html.DisplayNameFor(model => model.First().stock)</th>
+            <th>@Html.DisplayNameFor(model => model.First().precio)</th>
+            <th>@Html.DisplayNameFor(model => model.First().descripcion)</th>
+       
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.codigo</td>
+                <td>@item.nombre</td>
+                <td>@item.codCategoria</td>
+                <td>@item.stock</td>
+                <td>@item.precio.ToString("C")</td>
+                <td>@item.descripcion</td>
+              
+            </tr>
+        }
+    </table>
+
+    <div class="footer">
+        Reporte generado el @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Producto>
+
+@{
+    ViewBag.Title = "ReporteStock";
+}
+
+<h2>ReporteStock</h2>
+
+
+<form>
+    <label>Categoria</label>
+    @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
+            "Seleccione", new { @class = "form-control" })
+
+    <button class="btn btn-warning">Consultar</button>
+
+    <a class="btn btn-danger" href="@Url.Action("DescargarPDFStock", "Reporte", new { categoria = Request["categoria"] })">Descargar PDF</a>
+
+
+</form>
+
+
+<p>
+    @Html.ActionLink("Volver ", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codCategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+          
+
+
+
+
+        </tr>
+    }
+
+</table>
