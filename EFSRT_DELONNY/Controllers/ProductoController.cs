@@ -15,9 +15,15 @@ namespace EFSRT_DELONNY.Controllers
         categoriaDTO _categoria = new categoriaDTO();
         proveedorDTO _proveedor = new proveedorDTO();
         productoDAO _producto = new productoDAO();
-        public ActionResult MantLstProductos()
+        public ActionResult MantLstProductos(string categoria = "", string nombre = "")
         {
-            return View(_producto.GetAll());
+            ViewBag.Categorias = new SelectList(_categoria.GetAll(), "codigo", "nombre");
+
+            Producto objProducto = new Producto();
+            objProducto.codCategoria = categoria;
+            objProducto.nombre = nombre;
+
+            return View(_producto.GetByNameAndCombo(objProducto));
         }
 
         [HttpGet]

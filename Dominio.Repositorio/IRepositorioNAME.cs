@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
-    internal interface IRepositorioNAME<T> where T : class
+    public interface IRepositorioNAME<T> where T : class
     {
         IEnumerable<T> GetByName(string nombre);
         IEnumerable<T> GetByCombo(string categoria);
-        IEnumerable<T> GetByNameAndCombo(string nombre, string categoria);
+        IEnumerable<T> GetByNameAndCombo(T registro);
     }
 }

@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio.Repositorio;
 
 namespace Infraestructura.SQL.Negocios
 {
@@ -164,6 +165,50 @@ namespace Infraestructura.SQL.Negocios
                                 nomCategoria = reader.GetString(5),
                                 nomProveedor = reader.GetString(6),
                                 foto = reader.IsDBNull(7) ? "" : reader.GetString(7)
+                            });
+                        }
+                    }
+                }
+            }
+            return tempo;
+        }
+
+        IEnumerable<Producto> IRepositorioNAME<Producto>.GetByName(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Producto> IRepositorioNAME<Producto>.GetByCombo(string categoria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Producto> GetByNameAndCombo(Producto registro)
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            List<Producto> tempo = new List<Producto>();
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("USP_FILTRAR_CATEGORIA_CBO", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CodCat", registro.codCategoria);
+                    cmd.Parameters.AddWithValue("@NombreProd", registro.nombre);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tempo.Add(new Producto()
+                            {
+                                codigo = reader.GetString(0),
+                                nombre = reader.GetString(1),
+                                stock = reader.GetInt32(2),
+                                precio = reader.GetDecimal(3),
+                                descripcion = reader.GetString(4),
+                                codCategoria = reader.GetString(5),
+                                codProveedor = reader.GetString(6)
                             });
                         }
                     }

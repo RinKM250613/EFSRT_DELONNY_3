@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Lista.ProductoLista>
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Producto>
 
 @{
     ViewBag.Title = "MantLstProductos";
@@ -6,15 +6,16 @@
 
 <h2>MantLstProductos</h2>
 
-@*
-    <form>
-        <label>Categoria</label>
-        @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
-                "Seleccione", new { @class = "form-control" })
+<form>
+    <label>Categoria</label>
+    @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
+            "Seleccione", new { @class = "form-control" })
 
-        <button class="btn btn-warning">Consultar</button>
-    </form>
-*@
+    <button class="btn btn-warning">Consultar</button>
+
+    <label>Nombre: </label>
+    @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Escribe el producto" })
+</form>
 
 <p>
     @Html.ActionLink("Registrar Producto", "CrearProducto")
@@ -28,7 +29,7 @@
             @Html.DisplayNameFor(model => model.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nomCategoria)
+            @Html.DisplayNameFor(model => model.codCategoria)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.stock)
@@ -40,41 +41,40 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nomProveedor)
+            @Html.DisplayNameFor(model => model.codProveedor)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomCategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nomProveedor)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "ActualizarProducto", new { id = item.codigo }) |
-                @Html.ActionLink("Ver", "DetallesProducto", new { id = item.codigo }) |
-                @Html.ActionLink("Eliminar", "EliminarProducto", new { id = item.codigo })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codProveedor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActualizarProducto", new { id = item.codigo }) |
+            @Html.ActionLink("Ver", "DetallesProducto", new { id = item.codigo }) |
+            @Html.ActionLink("Eliminar", "EliminarProducto", new { id = item.codigo })
+        </td>
+    </tr>
+}
 
 </table>
