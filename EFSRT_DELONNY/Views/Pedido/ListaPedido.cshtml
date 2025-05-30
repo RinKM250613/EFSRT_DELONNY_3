@@ -6,6 +6,21 @@
 
 <h2>ListaPedido</h2>
 
+<form>
+    <div class="form-group">
+        <label>Fecha Generado</label>
+        <input type="date" name="fecha" class="form-control" />
+    </div>
+
+    <label>Nombre: </label>
+    @Html.TextBox("cliente", "", new { @class = "form-control", placeholder = "Escribe el cliente" })
+
+    <button class="btn btn-warning">Consultar</button>
+</form>
+
+
+
+
 <p>
     @Html.ActionLink("Registrar Pedido", "CrearPedido")
 </p>
@@ -65,7 +80,7 @@
             @Html.DisplayFor(modelItem => item.direccionDestino)
         </td>
         <td>
-            @Html.ActionLink("Actualizar", "ActualizarPedido", new {  id=item.codPedido  }) |
+            @Html.ActionLink("Actualizar", "ActualizarPedido", new { id = item.codPedido }) |
             @Html.ActionLink("Detalles", "DetallesPedido", new { id = item.codPedido }) |
             @Html.ActionLink("Eliminar", "EliminarPedido", new { id = item.codPedido })
         </td>

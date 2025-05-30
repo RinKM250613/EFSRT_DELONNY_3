@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidad.Negocio.Entidad;
+using Dominio.Entidad.Negocio.Entidad.Lista;
 using Infraestructura.SQL.Negocios;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,11 @@ namespace EFSRT_DELONNY.Controllers
         pedidoDAO _pedido = new pedidoDAO();
         clienteDTO _cliente = new clienteDTO();
         empleadoDTO _empleado = new empleadoDTO();
-        public ActionResult ListaPedido()
+        public ActionResult ListaPedido(DateTime? fecha = null, string cliente = "")
         {
-            return View(_pedido.GetAll());
+            return View(_pedido.GetByDateAndName(fecha, cliente));
         }
+
 
         [HttpGet]
         public ActionResult CrearPedido()

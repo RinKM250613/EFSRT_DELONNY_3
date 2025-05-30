@@ -8,6 +8,6 @@ namespace Dominio.Repositorio
 {
     public interface IRepositorioDATE<T> where T : class
     {
-        IEnumerable<T> GetByDateAndName(DateTime? fecha, string nombreCli);
+        IEnumerable<T> GetByDateAndName(DateTime? fechaPed, string nombre);
     }
 }

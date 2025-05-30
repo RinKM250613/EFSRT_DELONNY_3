@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio.Entidad.Negocio.Abstraccion;
+using Microsoft.Win32;
 
 namespace Infraestructura.SQL.Negocios
 {
@@ -112,44 +113,6 @@ namespace Infraestructura.SQL.Negocios
             }
             return ped;
         }
-
-        public IEnumerable<PedidoLista> GetAll()
-        {
-            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
-            List<PedidoLista> tempo = new List<PedidoLista>();
-            using (SqlConnection con = new SqlConnection(cadena))
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("USP_LISTAR_PEDIDOS", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            tempo.Add(new PedidoLista()
-                            {
-                                codPedido = reader.GetString(0),
-                                nomCliente = reader.GetString(1),
-                                nomEmpleado = reader.GetString(2),
-                                fecPedido = reader.GetDateTime(3),
-                                fecEnvio = reader.GetDateTime(4),
-                                estadoEnvio = reader.GetString(5),
-                                cantidad = reader.GetInt16(6),
-                                direccionDestino = reader.GetString(7),
-                            });
-                        }
-                    }
-                }
-            }
-            return tempo;
-        }
-
-        public IEnumerable<PedidoLista> GetByDateAndName(DateTime? fecha, string nombreCli)
-        {
-            throw new NotImplementedException();
-        }
-
         public string Update(Pedido pedido)
         {
             string mensaje = "";
@@ -185,6 +148,85 @@ namespace Infraestructura.SQL.Negocios
             }
             return mensaje;
         }
+        public IEnumerable<PedidoLista> GetAll()
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            List<PedidoLista> tempo = new List<PedidoLista>();
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("USP_LISTAR_PEDIDOS", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tempo.Add(new PedidoLista()
+                            {
+                                codPedido = reader.GetString(0),
+                                nomCliente = reader.GetString(1),
+                                nomEmpleado = reader.GetString(2),
+                                fecPedido = reader.GetDateTime(3),
+                                fecEnvio = reader.GetDateTime(4),
+                                estadoEnvio = reader.GetString(5),
+                                cantidad = reader.GetInt16(6),
+                                direccionDestino = reader.GetString(7),
+                            });
+                        }
+                    }
+                }
+            }
+            return tempo;
+        }
 
+        public IEnumerable<PedidoLista> GetByDateAndName(DateTime? fechaPed, string nombre)
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            List<PedidoLista> tempo = new List<PedidoLista>();
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("USP_FILTRAR_FECHA_X_NOMBRE", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (fechaPed.HasValue)
+                    {
+                        cmd.Parameters.AddWithValue("@FecRegis", fechaPed.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@FecRegis", DBNull.Value);
+                    }
+
+                    if (string.IsNullOrWhiteSpace(nombre))
+                    {
+                        cmd.Parameters.AddWithValue("@NomCli", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@NomCli", nombre.Trim());
+                    }
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tempo.Add(new PedidoLista()
+                            {
+                                codPedido = reader.GetString(0),
+                                nomCliente = reader.GetString(1),
+                                nomEmpleado = reader.GetString(2),
+                                fecPedido = reader.GetDateTime(3).Date,
+                                fecEnvio = reader.GetDateTime(4).Date,
+                                estadoEnvio = reader.GetString(5),
+                                cantidad = reader.GetInt16(6),
+                                direccionDestino = reader.GetString(7),
+                            });
+                        }
+                    }
+                }
+            }
+            return tempo;
+        }
     }
 }
