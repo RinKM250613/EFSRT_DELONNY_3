@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidad.Negocio.Abstraccion
 {
-    public interface IProveedor : IRepositorioCRUD<Proveedor>, IRepositorioGET<ProveedorLista>
+    public interface IProveedor : IRepositorioCRUD<Proveedor>, IRepositorioGET<ProveedorLista>, IRepositorioNAME<ProveedorLista>
     {
     }
 }

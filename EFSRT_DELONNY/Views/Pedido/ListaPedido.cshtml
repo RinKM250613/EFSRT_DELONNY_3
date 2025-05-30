@@ -24,9 +24,6 @@
             @Html.DisplayNameFor(model => model.fecPedido)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecEntrega)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.fecEnvio)
         </th>
         <th>
@@ -36,7 +33,7 @@
             @Html.DisplayNameFor(model => model.cantidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ciudadDestino)
+            @Html.DisplayNameFor(model => model.direccionDestino)
         </th>
         <th></th>
     </tr>
@@ -56,9 +53,6 @@
             @Html.DisplayFor(modelItem => item.fecPedido)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fecEntrega)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.fecEnvio)
         </td>
         <td>
@@ -68,7 +62,7 @@
             @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ciudadDestino)
+            @Html.DisplayFor(modelItem => item.direccionDestino)
         </td>
         <td>
             @Html.ActionLink("Actualizar", "ActualizarPedido", new {  id=item.codPedido  }) |

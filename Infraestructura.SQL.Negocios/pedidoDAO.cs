@@ -8,10 +8,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio.Entidad.Negocio.Abstraccion;
 
 namespace Infraestructura.SQL.Negocios
 {
-    public class pedidoDAO
+    public class pedidoDAO : IPedido
     {
         public string Add(Pedido pedido)
         {
@@ -132,17 +133,21 @@ namespace Infraestructura.SQL.Negocios
                                 nomCliente = reader.GetString(1),
                                 nomEmpleado = reader.GetString(2),
                                 fecPedido = reader.GetDateTime(3),
-                                fecEntrega = reader.GetDateTime(4),
-                                fecEnvio = reader.GetDateTime(5),
-                                estadoEnvio = reader.GetString(6),
-                                cantidad = reader.GetInt16(7),
-                                ciudadDestino = reader.GetString(8),
+                                fecEnvio = reader.GetDateTime(4),
+                                estadoEnvio = reader.GetString(5),
+                                cantidad = reader.GetInt16(6),
+                                direccionDestino = reader.GetString(7),
                             });
                         }
                     }
                 }
             }
             return tempo;
+        }
+
+        public IEnumerable<PedidoLista> GetByDateAndName(DateTime? fecha, string nombreCli)
+        {
+            throw new NotImplementedException();
         }
 
         public string Update(Pedido pedido)

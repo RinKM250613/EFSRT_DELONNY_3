@@ -161,7 +161,7 @@ namespace Infraestructura.SQL.Negocios
                             {
                                 codigo = reader.GetString(0),
                                 nombre = reader.GetString(1),
-                                codDistrito = reader.GetString(2),
+                                nomDistrito = reader.GetString(2),
                                 fono = reader.GetString(3)
                                
                             });
@@ -171,6 +171,37 @@ namespace Infraestructura.SQL.Negocios
             }
 
 	
+            return tempo;
+        }
+
+        public IEnumerable<ProveedorLista> GetByNameAndCombo(ProveedorLista registro)
+        {
+            string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            List<ProveedorLista> tempo = new List<ProveedorLista>();
+            using (SqlConnection con = new SqlConnection(cadena))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("USP_FILTRAR_DISTRITO_CBO_X_NOMBRE", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CodDis", registro.codDistrito);
+                    cmd.Parameters.AddWithValue("@NombreProv", registro.nombre);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tempo.Add(new ProveedorLista()
+                            {
+                                codigo = reader.GetString(0),
+                                nombre = reader.GetString(1),
+                                nomDistrito = reader.GetString(2),
+                                fono = reader.GetString(3)
+                            });
+                        }
+                    }
+                }
+            }
             return tempo;
         }
     }

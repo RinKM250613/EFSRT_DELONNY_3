@@ -14,7 +14,9 @@ namespace Dominio.Entidad.Negocio.Entidad.Lista
         [Display(Name = "Nombre")] public string nombre { get; set; }
 
         [Display(Name = "Distrito")]
-        public string codDistrito { get; set; }
+        public string nomDistrito { get; set; }
+
+        public int codDistrito { get; set; }
         [Display(Name = "Telefóno")] public string fono { get; set; }
     }
 }

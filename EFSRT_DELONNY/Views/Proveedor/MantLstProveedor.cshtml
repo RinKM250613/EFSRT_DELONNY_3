@@ -6,6 +6,19 @@
 
 <h2>MantLstProveedor</h2>
 
+<form>
+    <label>Distrito</label>
+    @Html.DropDownList("distrito", (SelectList)ViewBag.Distrito,
+            "Seleccione", new { @class = "form-control" })
+
+    <label>Nombre: </label>
+    @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Escribe el proveedor" })
+
+    <button class="btn btn-warning">Consultar</button>
+</form>
+
+
+
 <p>
     @Html.ActionLink("Ingresar nuevo Proveedor", "CrearProveedor")
 </p>
@@ -18,7 +31,7 @@
             @Html.DisplayNameFor(model => model.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.codDistrito)
+            @Html.DisplayNameFor(model => model.nomDistrito)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.fono)
@@ -35,15 +48,15 @@
             @Html.DisplayFor(modelItem => item.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.codDistrito)
+            @Html.DisplayFor(modelItem => item.nomDistrito)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.fono)
         </td>
         <td>
-            @Html.ActionLink("Actualizar", "ActualizarProveedor", new {  id=item.codigo  }) |
-            @Html.ActionLink("Detalles", "DetallesProveedor", new {  id=item.codigo  }) |
-            @Html.ActionLink("Eliminar", "EliminarProveedor", new {  id=item.codigo  })
+            @Html.ActionLink("Actualizar", "ActualizarProveedor", new { id = item.codigo }) |
+            @Html.ActionLink("Detalles", "DetallesProveedor", new { id = item.codigo }) |
+            @Html.ActionLink("Eliminar", "EliminarProveedor", new { id = item.codigo })
         </td>
     </tr>
 }

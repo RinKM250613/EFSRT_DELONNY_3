@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidad.Negocio.Abstraccion
 {
-    public interface IPedido : IRepositorioCRUD<Pedido>, IRepositorioGET<PedidoLista>
+    public interface IPedido : IRepositorioCRUD<Pedido>, IRepositorioGET<PedidoLista>, IRepositorioDATE<PedidoLista>
     {
     }
 }

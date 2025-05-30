@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Dominio.Entidad.Negocio.Abstraccion;
 using Dominio.Entidad.Negocio.Entidad;
+using Dominio.Entidad.Negocio.Entidad.Lista;
 using Infraestructura.SQL.Negocios;
 
 namespace EFSRT_DELONNY.Controllers
@@ -17,9 +18,14 @@ namespace EFSRT_DELONNY.Controllers
 
 
 
-        public ActionResult MantLstProveedor()
+        public ActionResult MantLstProveedor(int distrito = 0, string nombre = "")
         {
-            return View(_proveedor.GetAll());
+            ViewBag.Distrito = new SelectList(_distrito.GetAll(), "codigo", "nombre");
+            ProveedorLista objProveedor = new ProveedorLista();
+            objProveedor.codDistrito = distrito;
+            objProveedor.nombre = nombre;
+
+            return View(_proveedor.GetByNameAndCombo(objProveedor));
         }
 
 

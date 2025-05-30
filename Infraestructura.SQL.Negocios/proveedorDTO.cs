@@ -54,6 +54,11 @@ namespace Infraestructura.SQL.Negocios
             return temporal;
         }
 
+        public IEnumerable<ProveedorLista> GetByNameAndCombo(ProveedorLista registro)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Update(Proveedor registro)
         {
             throw new NotImplementedException();
