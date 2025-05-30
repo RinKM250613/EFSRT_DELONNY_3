@@ -8,5 +8,11 @@ namespace Dominio.Entidad.Negocio.Entidad
 {
     internal class SairKbro
     {
+
+        int sair = 0; 
+        string rebeca = string.Empty;
+
+
+
     }
 }

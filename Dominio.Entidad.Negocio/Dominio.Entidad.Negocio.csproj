@@ -59,6 +59,7 @@
     <Compile Include="Entidad\Lista\ProveedorLista.cs" />
     <Compile Include="Entidad\Pedido.cs" />
     <Compile Include="Entidad\Proveedor.cs" />
+    <Compile Include="Entidad\SairKbro.cs" />
     <Compile Include="Entidad\Usuario.cs" />
     <Compile Include="Entidad\Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
