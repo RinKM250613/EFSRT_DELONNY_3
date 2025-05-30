@@ -173,16 +173,6 @@ namespace Infraestructura.SQL.Negocios
             return tempo;
         }
 
-        IEnumerable<Producto> IRepositorioNAME<Producto>.GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Producto> IRepositorioNAME<Producto>.GetByCombo(string categoria)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Producto> GetByNameAndCombo(Producto registro)
         {
             string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;

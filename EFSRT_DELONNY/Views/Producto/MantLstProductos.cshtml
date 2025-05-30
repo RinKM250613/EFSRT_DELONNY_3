@@ -11,10 +11,10 @@
     @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
             "Seleccione", new { @class = "form-control" })
 
-    <button class="btn btn-warning">Consultar</button>
-
     <label>Nombre: </label>
     @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Escribe el producto" })
+
+    <button class="btn btn-warning">Consultar</button>
 </form>
 
 <p>
