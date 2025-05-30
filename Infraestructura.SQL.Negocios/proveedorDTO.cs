@@ -54,11 +54,6 @@ namespace Infraestructura.SQL.Negocios
             return temporal;
         }
 
-        public IEnumerable<ProveedorLista> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
         public string Update(Proveedor registro)
         {
             throw new NotImplementedException();

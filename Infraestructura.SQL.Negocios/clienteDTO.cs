@@ -36,10 +36,5 @@ namespace Infraestructura.SQL.Negocios
             }
             return temporal;
         }
-
-        public IEnumerable<Cliente> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

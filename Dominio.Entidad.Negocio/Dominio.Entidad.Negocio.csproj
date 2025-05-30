@@ -57,7 +57,6 @@
     <Compile Include="Entidad\Lista\PedidoLista.cs" />
     <Compile Include="Entidad\Lista\ProductoLista.cs" />
     <Compile Include="Entidad\Lista\ProveedorLista.cs" />
-    <Compile Include="Entidad\Lista\RebecaGAAAAA.cs" />
     <Compile Include="Entidad\Pedido.cs" />
     <Compile Include="Entidad\Proveedor.cs" />
     <Compile Include="Entidad\Usuario.cs" />

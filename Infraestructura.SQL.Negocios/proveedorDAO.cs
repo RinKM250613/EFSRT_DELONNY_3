@@ -173,10 +173,5 @@ namespace Infraestructura.SQL.Negocios
 	
             return tempo;
         }
-
-        public IEnumerable<ProveedorLista> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -180,9 +180,6 @@ namespace Infraestructura.SQL.Negocios
             }
             return mensaje;
         }
-        public IEnumerable<PedidoLista> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

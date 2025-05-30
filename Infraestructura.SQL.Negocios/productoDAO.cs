@@ -171,10 +171,5 @@ namespace Infraestructura.SQL.Negocios
             }
             return tempo;
         }
-
-        public IEnumerable<ProductoLista> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -12,7 +12,6 @@ namespace Infraestructura.SQL.Negocios
 {
     public class distritoDTO :IDistrito
     {
-
         public IEnumerable<Distrito> GetAll()
         {
             List<Distrito> temporal = new List<Distrito>();
@@ -37,15 +36,5 @@ namespace Infraestructura.SQL.Negocios
             }
             return temporal;
         }
-
-        public IEnumerable<Distrito> GetByName(string nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-
     }
 }

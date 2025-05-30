@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio.Repositorio
 {
-    public interface IRepositorioGET<T> where T : class
+    public interface IRepositorioDATE<T> where T : class
     {
-        IEnumerable<T> GetAll();     
+        IEnumerable<T> GetByDate(DateTime? fecha);
     }
 }
