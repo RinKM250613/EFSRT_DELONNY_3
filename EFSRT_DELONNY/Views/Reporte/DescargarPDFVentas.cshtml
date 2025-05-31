@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReporteProducto>
 
 @{
-    Layout = null; 
-    ViewBag.Title = "DescargarPDFStock";
+    Layout = null;
+    ViewBag.Title = "DescargarPDFSVentas";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Reporte de Stock</title>
+    <title>Reporte de Ventas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,29 +53,25 @@
 </head>
 <body>
 
-    <h2>Reporte de Stock de Productos</h2>
+    <h2>Reporte de Stock de Ventas</h2>
 
     <table>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.First().codigo)</th>
-            <th>@Html.DisplayNameFor(model => model.First().nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.First().codProducto)</th>
+            <th>@Html.DisplayNameFor(model => model.First().nombreProducto)</th>
             <th>@Html.DisplayNameFor(model => model.First().codCategoria)</th>
-            <th>@Html.DisplayNameFor(model => model.First().stock)</th>
-            <th>@Html.DisplayNameFor(model => model.First().precio)</th>
-            <th>@Html.DisplayNameFor(model => model.First().descripcion)</th>
-       
+            <th>@Html.DisplayNameFor(model => model.First().TotalVendido)</th>
+         
+
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.codigo</td>
-                <td>@item.nombre</td>
+                <td>@item.codProducto</td>
+                <td>@item.nombreProducto</td>
                 <td>@item.codCategoria</td>
-                <td>@item.stock</td>
-                <td>@item.precio.ToString("C")</td>
-                <td>@item.descripcion</td>
-              
+                <td>@item.TotalVendido</td>
             </tr>
         }
     </table>

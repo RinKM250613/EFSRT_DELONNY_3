@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="categoriaDTO.cs" />
     <Compile Include="clienteDTO.cs" />
+    <Compile Include="detallePedidoDTO.cs" />
     <Compile Include="distritoDTO.cs" />
     <Compile Include="empleadoDTO.cs" />
     <Compile Include="pedidoDAO.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedorDAO.cs" />
     <Compile Include="proveedorDTO.cs" />
+    <Compile Include="reporteProductoDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dominio.Entidad.Negocio\Dominio.Entidad.Negocio.csproj">

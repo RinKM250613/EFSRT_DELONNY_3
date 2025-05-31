@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReporteProducto>
+
+@{
+    ViewBag.Title = "ReporteVenta";
+}
+
+<form>
+    <label>Categoria</label>
+    @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
+            "Seleccione", new { @class = "form-control" })
+
+    <button class="btn btn-warning">Consultar</button>
+
+    <a class="btn btn-danger" href="@Url.Action("DescargarPDFVentas", "Reporte", new { categoria = Request["categoria"] })">Descargar PDF</a>
+
+
+</form>
+<h2>ReporteVenta</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalVendido)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codCategoria)
+        </td>
+       
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalVendido)
+        </td>
+     
+    </tr>
+}
+
+</table>

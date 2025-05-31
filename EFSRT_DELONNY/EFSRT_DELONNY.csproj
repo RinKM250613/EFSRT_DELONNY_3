@@ -206,6 +206,8 @@
     <Content Include="Views\Pedido\EliminarPedido.cshtml" />
     <Content Include="Views\Reporte\ReporteStock.cshtml" />
     <Content Include="Views\Reporte\DescargarPDFStock.cshtml" />
+    <Content Include="Views\Reporte\ReporteVenta.cshtml" />
+    <Content Include="Views\Reporte\DescargarPDFVentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

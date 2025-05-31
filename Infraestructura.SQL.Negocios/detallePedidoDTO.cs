@@ -4,15 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.Entidad.Negocio.Entidad
+namespace Infraestructura.SQL.Negocios
 {
-    internal class SairKbro
+    internal class detallePedidoDTO
     {
-
-        int sair = 0; 
-        string rebeca = string.Empty;
-
-
-
     }
 }
