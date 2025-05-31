@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidad.Negocio.Entidad.Reportes
 {
-    public class ReportePedidos
+    public class ReportePedidos 
     {
+
+
+
         [Display(Name = "Cod Pedido"), Required]
         public string codPedido { get; set; }
 
@@ -26,12 +29,12 @@ namespace Dominio.Entidad.Negocio.Entidad.Reportes
 
         [Display(Name = "Fecha Envío")]
         public DateTime? fechaEnvio { get; set; }
-        [Display(Name = "Fecha Envío")]
-        public DateTime? fechaInicio{ get; set; }
-        [Display(Name = "Fecha Envío")]
-        public DateTime? fechaFin{ get; set; }
+        [Display(Name = "Fecha Inicio")]
+        public DateTime? fechaInicio { get; set; }
+        [Display(Name = "Fecha Fin")]
+        public DateTime? fechaFin { get; set; }
 
-        [Display(Name = "Estado Envío")]
+        [Display(Name = "Estado Fin")]
         public string estadoEnvio { get; set; }
 
         [Display(Name = "Cantidad Pedido")]
@@ -66,8 +69,10 @@ namespace Dominio.Entidad.Negocio.Entidad.Reportes
 
         [Display(Name = "Estado Detalle")]
         public bool estadoDetalle { get; set; }
+
+
+
+
+
     }
 }
-
-
-

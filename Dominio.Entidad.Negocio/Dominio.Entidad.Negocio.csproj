@@ -49,6 +49,7 @@
     <Compile Include="Abstraccion\IPedido.cs" />
     <Compile Include="Abstraccion\IProducto.cs" />
     <Compile Include="Abstraccion\IProveedor.cs" />
+    <Compile Include="Abstraccion\IReportePedido.cs" />
     <Compile Include="Abstraccion\IReporteProducto.cs" />
     <Compile Include="Entidad\Categoria.cs" />
     <Compile Include="Entidad\Cliente.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Entidad\Lista\ProveedorLista.cs" />
     <Compile Include="Entidad\Pedido.cs" />
     <Compile Include="Entidad\Proveedor.cs" />
+    <Compile Include="Entidad\Reportes\ReportePedidos.cs" />
     <Compile Include="Entidad\Reportes\ReporteProducto.cs" />
     <Compile Include="Entidad\Usuario.cs" />
     <Compile Include="Entidad\Producto.cs" />

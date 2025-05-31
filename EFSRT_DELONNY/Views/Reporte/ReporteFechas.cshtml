@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReportePedidos>
+
+@{
+    ViewBag.Title = "Reporte de Pedidos por Fecha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">📦 Reporte de Pedidos por Fecha</h2>
+
+        @using (Html.BeginForm("ReporteFechas", "Reporte", FormMethod.Get, new { @class = "row g-3" }))
+        {
+            <div class="col-md-6">
+                <label for="inicio" class="form-label fw-bold">Fecha Inicio:</label>
+                <input type="date" name="inicio" class="form-control" value="@Request.QueryString["inicio"]" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="fin" class="form-label fw-bold">Fecha Fin:</label>
+                <input type="date" name="fin" class="form-control" value="@Request.QueryString["fin"]" />
+            </div>
+
+            <div class="col-12 d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-funnel-fill"></i> Filtrar</button>
+                <a class="btn btn-danger" href="@Url.Action("DescargarPDFFechas", "Reporte", new { inicio = Request["inicio"], fin = Request["fin"] })">
+                    <i class="bi bi-file-earmark-pdf-fill"></i> Descargar PDF
+                </a>
+            </div>
+        }
+
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped table-hover align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Código Pedido</th>
+                        <th>Cliente</th>
+                        <th>Empleado</th>
+                        <th>Fecha Pedido</th>
+                        <th>Entrega</th>
+                        <th>Envío</th>
+                        <th>Estado Envío</th>
+                        <th>Cantidad</th>
+                        <th>Destino</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Estado Pedido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.codPedido</td>
+                            <td class="text-center">@item.codCliente</td>
+                            <td class="text-center">@item.codEmpleado</td>
+                            <td class="text-center">@item.fechaPedido.ToShortDateString()</td>
+                            <td class="text-center">@item.fechaEntrega?.ToShortDateString()</td>
+                            <td class="text-center">@item.fechaEnvio?.ToShortDateString()</td>
+                            <td class="text-center">@item.estadoEnvio</td>
+                            <td class="text-end">@item.cantidadPedido</td>
+                            <td class="text-center">@item.destino</td>
+                            <td>@item.direccionDestino</td>
+                            <td class="text-center">@item.ciudadDestino</td>
+                            <td class="text-center">
+                                @if (item.estadoPedido)
+                                {
+                                    <span class="badge bg-success">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Inactivo</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

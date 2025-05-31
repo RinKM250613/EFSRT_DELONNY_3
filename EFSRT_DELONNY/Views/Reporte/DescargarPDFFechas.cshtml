@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReportePedidos>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de Pedidos por Fecha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            margin: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 6px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 9px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            max-height: 50px;
+        }
+
+        .estado-activo {
+            color: green;
+            font-weight: bold;
+        }
+
+        .estado-inactivo {
+            color: gray;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Reporte de Pedidos por Fecha</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
+                <th>Fecha Pedido</th>
+                <th>Fecha Entrega</th>
+                <th>Fecha Envío</th>
+                <th>Estado Envío</th>
+                <th>Cantidad</th>
+                <th>Destino</th>
+                <th>Dirección</th>
+                <th>Ciudad</th>
+                <th>Estado Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.codPedido</td>
+                    <td>@item.codCliente</td>
+                    <td>@item.codEmpleado</td>
+                    <td>@item.fechaPedido.ToShortDateString()</td>
+                    <td>@(item.fechaEntrega?.ToShortDateString() ?? "-")</td>
+                    <td>@(item.fechaEnvio?.ToShortDateString() ?? "-")</td>
+                    <td>@item.estadoEnvio</td>
+                    <td>@item.cantidadPedido</td>
+                    <td>@item.destino</td>
+                    <td>@item.direccionDestino</td>
+                    <td>@item.ciudadDestino</td>
+                    <td>
+                        @if (item.estadoPedido)
+                        {
+                            <span class="estado-activo">Activo</span>
+                        }
+                        else
+                        {
+                            <span class="estado-inactivo">Inactivo</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Generado el @DateTime.Now.ToString("dd/MM/yyyy HH:mm")
+    </div>
+
+</body>
+</html>
