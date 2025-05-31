@@ -11,5 +11,7 @@ namespace Dominio.Repositorio
         IEnumerable<T> ComboCategoriaStock(T registro);
         IEnumerable<T> GetCategoriaVentas(T registro);
 
+        IEnumerable<T> FiltroFechas(T registro);
+
     }
 }
