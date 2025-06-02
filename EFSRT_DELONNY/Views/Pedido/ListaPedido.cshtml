@@ -6,14 +6,14 @@
 
 <h2>ListaPedido</h2>
 
-<form>
+<form method="get">
     <div class="form-group">
         <label>Fecha Generado</label>
-        <input type="date" name="fecha" class="form-control" />
+        <input type="date" name="fecha" class="form-control" value="@Request["fecha"]" />
     </div>
 
     <label>Nombre: </label>
-    @Html.TextBox("cliente", "", new { @class = "form-control", placeholder = "Escribe el cliente" })
+    @Html.TextBox("cliente", Request["cliente"], new { @class = "form-control", placeholder = "Escribe el cliente" })
 
     <button class="btn btn-warning">Consultar</button>
 </form>
