@@ -9,16 +9,12 @@ namespace Dominio.Entidad.Negocio.Entidad.Reportes
 {
     public class ReporteProducto
     {
-        public string codProducto { get; set; }
-        public string nombreProducto { get; set; }
-        public string codCategoria { get; set; }
-
-        [Display(Name = "Cod Prod"), Required]
-        public string codigo { get; set; }
+        [Display(Name = "Código Producto"), Required] public string codProducto { get; set; }
         [Display(Name = "Nombre"), Required] public string nombre { get; set; }
+        [Display(Name = "Código categoria"), Required] public string codCategoria { get; set; }
+        [Display(Name = "Categoria"), Required] public string nomCategoria { get; set; }
         [Display(Name = "Stock"), Required] public int stock { get; set; }
         [Display(Name = "Precio"), Required] public decimal precio { get; set; }
-        [Display(Name = "Desc"), Required] public string descripcion { get; set; }
         public int TotalVendido { get; set; }
     }
 }

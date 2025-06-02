@@ -33,13 +33,12 @@ namespace Infraestructura.SQL.Negocios
                         {
                             tempo.Add(new ReporteProducto()
                             {
-                                codigo = reader.GetString(0),
+                                codProducto = reader.GetString(0),
                                 nombre = reader.GetString(1),
                                 stock = reader.GetInt32(2),
                                 precio = reader.GetDecimal(3),
                                 codCategoria = reader.GetString(4),
-                                descripcion = reader.GetString(5)
-
+                                nomCategoria = reader.GetString(5)
                             });
                         }
                     }
@@ -70,11 +69,11 @@ namespace Infraestructura.SQL.Negocios
                         {
                             tempo.Add(new ReporteProducto()
                             {
-                              codProducto = reader.GetString(0),
-                                nombreProducto =  reader.GetString(1),
+                                codProducto = reader.GetString(0),
+                                nombre =  reader.GetString(1),
                                 codCategoria = reader.GetString(2),
-                                TotalVendido = reader.GetInt32(3),
-
+                                nomCategoria = reader.GetString(3),
+                                TotalVendido = reader.GetInt32(4)
                             });
                         }
                     }

@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReportePedidos>
 
+@{
+    Layout = null;
+    ViewBag.Title = "DescargarPDFFechas";
+}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,17 +77,16 @@
     <table>
         <thead>
             <tr>
-                <th>Código</th>
+                <th>Código Pedido</th>
                 <th>Cliente</th>
                 <th>Empleado</th>
                 <th>Fecha Pedido</th>
-                <th>Fecha Entrega</th>
-                <th>Fecha Envío</th>
-                <th>Estado Envío</th>
+                <th>Entrega</th>
+                <th>Envío</th>
+                <th>Situación</th>
                 <th>Cantidad</th>
-                <th>Destino</th>
                 <th>Dirección</th>
-                <th>Ciudad</th>
+                <th>Distrito</th>
                 <th>Estado Pedido</th>
             </tr>
         </thead>
@@ -97,7 +102,6 @@
                     <td>@(item.fechaEnvio?.ToShortDateString() ?? "-")</td>
                     <td>@item.estadoEnvio</td>
                     <td>@item.cantidadPedido</td>
-                    <td>@item.destino</td>
                     <td>@item.direccionDestino</td>
                     <td>@item.ciudadDestino</td>
                     <td>

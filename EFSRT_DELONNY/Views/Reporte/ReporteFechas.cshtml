@@ -39,11 +39,10 @@
                         <th>Fecha Pedido</th>
                         <th>Entrega</th>
                         <th>Envío</th>
-                        <th>Estado Envío</th>
+                        <th>Situación</th>
                         <th>Cantidad</th>
-                        <th>Destino</th>
                         <th>Dirección</th>
-                        <th>Ciudad</th>
+                        <th>Distrito</th>
                         <th>Estado Pedido</th>
                     </tr>
                 </thead>
@@ -54,12 +53,15 @@
                             <td class="text-center">@item.codPedido</td>
                             <td class="text-center">@item.codCliente</td>
                             <td class="text-center">@item.codEmpleado</td>
-                            <td class="text-center">@item.fechaPedido.ToShortDateString()</td>
-                            <td class="text-center">@item.fechaEntrega?.ToShortDateString()</td>
-                            <td class="text-center">@item.fechaEnvio?.ToShortDateString()</td>
+                            <td class="text-center">@item.fechaPedido.ToString("dd-MM-yyyy")</td>
+                            <td class="text-center">
+                                @(item.fechaEntrega.HasValue ? item.fechaEntrega.Value.ToString("dd-MM-yyyy") : "")
+                            </td>
+                            <td class="text-center">
+                                @(item.fechaEnvio.HasValue ? item.fechaEnvio.Value.ToString("dd-MM-yyyy") : "")
+                            </td>
                             <td class="text-center">@item.estadoEnvio</td>
                             <td class="text-end">@item.cantidadPedido</td>
-                            <td class="text-center">@item.destino</td>
                             <td>@item.direccionDestino</td>
                             <td class="text-center">@item.ciudadDestino</td>
                             <td class="text-center">

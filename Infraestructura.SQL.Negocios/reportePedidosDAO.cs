@@ -43,16 +43,13 @@ namespace Infraestructura.SQL.Negocios
                                 codCliente = reader.GetString(1),
                                 codEmpleado = reader.GetString(2),
                                 fechaPedido = reader.GetDateTime(3),
-                                fechaEntrega = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4),
-                                fechaEnvio = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5),
+                                fechaEntrega = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4).Date,
+                                fechaEnvio = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5).Date,
                                 estadoEnvio = reader.GetString(6),
                                 cantidadPedido = reader.GetInt16(7),
-                                destino = reader.GetString(8),
-                                direccionDestino = reader.GetString(9),
-                                ciudadDestino = reader.GetString(10),
-                                estadoPedido = reader.GetBoolean(11),
-                            
-
+                                direccionDestino = reader.GetString(8),
+                                ciudadDestino = reader.GetString(9),
+                                estadoPedido = reader.GetBoolean(10),
 
                             });
                         }
