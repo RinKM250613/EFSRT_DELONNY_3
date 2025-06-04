@@ -4,17 +4,26 @@
     ViewBag.Title = "Eliminar Producto";
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4 text-danger">Eliminar Producto</h2>
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.x.x/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Estilos_Eliminar.css" rel="stylesheet" />
+}
 
-    @if (TempData["mensaje"] != null)
-    {
-        <div class="alert alert-success">@TempData["mensaje"]</div>
-    }
+<div class="container mt-5 mb-5 confirm-delete-container">
+    <h2 class="confirm-delete-title text-danger mb-4">Eliminar Producto</h2>
 
-    <div class="card shadow-sm border-0">
+    <div class="alert alert-warning confirm-delete-alert shadow-sm">
+        <h4 class="alert-heading">¿Estás seguro de que deseas eliminar este producto?</h4>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
+    
+
+
+
+
+    <div class="card confirm-delete-card shadow-lg border-0">
         <div class="card-body">
-            <h5 class="card-title">¿Estás seguro de que deseas eliminar este producto?</h5>
+            <h5 class="card-title mb-3">¿Estás seguro de que deseas eliminar este producto?</h5>
             <hr />
             <dl class="row">
                 <dt class="col-sm-4">Código</dt>
@@ -45,9 +54,9 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                <div class="d-flex justify-content-between mt-4">
-                    <input type="submit" value="Eliminar" class="btn btn-danger" />
-                    @Html.ActionLink("Volver al listado", "MantLstProductos", null, new { @class = "btn btn-outline-secondary" })
+                <div class="d-flex gap-3 justify-content-center mt-4">
+                    <input type="submit" value="Eliminar" class="btn btn-danger btn-delete" />
+                    @Html.ActionLink("Volver al listado", "MantLstProductos", null, new { @class = "btn btn-secondary btn-cancel" })
                 </div>
             }
         </div>

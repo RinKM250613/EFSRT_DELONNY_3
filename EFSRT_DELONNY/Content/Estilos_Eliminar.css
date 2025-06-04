@@ -1,0 +1,84 @@
+﻿/* Contenedor principal */
+.confirm-delete-container {
+    max-width: 700px;
+}
+
+/* Título */
+.confirm-delete-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(255, 0, 0, 0.5);
+}
+
+/* Alert de advertencia */
+.confirm-delete-alert {
+    border-left: 6px solid #dc3545; /* rojo Bootstrap */
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+}
+
+/* Card de detalle */
+.confirm-delete-card {
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Terminos y definiciones */
+dl.row dt {
+    font-weight: 600;
+    color: #444;
+}
+
+dl.row dd {
+    font-weight: 400;
+    color: #555;
+}
+
+/* Botones */
+.btn-delete {
+    min-width: 130px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.5);
+    transition: all 0.3s ease;
+}
+
+    .btn-delete:hover, .btn-delete:focus {
+        background-color: #b02a37;
+        box-shadow: 0 6px 12px rgba(176, 42, 55, 0.75);
+        outline: none;
+    }
+
+.btn-cancel {
+    min-width: 130px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-color: #6c757d;
+    color: #495057;
+    transition: all 0.3s ease;
+}
+
+    .btn-cancel:hover, .btn-cancel:focus {
+        background-color: #6c757d;
+        color: white;
+        box-shadow: 0 4px 10px rgba(108, 117, 125, 0.6);
+        outline: none;
+    }
+
+/* Ajustes responsivos */
+@media (max-width: 576px) {
+    .confirm-delete-container {
+        padding: 0 15px;
+    }
+
+    .btn-delete, .btn-cancel {
+        width: 100%;
+    }
+
+    .d-flex.justify-content-center {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

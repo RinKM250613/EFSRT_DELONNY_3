@@ -1,0 +1,13 @@
+﻿/* ======== LISTADO ======== */
+.tabla-listado {
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .tabla-listado th {
+        background-color: #e0f2fe;
+        color: #1e3a8a;
+        text-align: center;
+    }

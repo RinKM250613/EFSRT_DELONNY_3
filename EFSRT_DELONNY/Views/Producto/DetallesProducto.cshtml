@@ -2,15 +2,22 @@
 
 @{
     ViewBag.Title = "Detalles del Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-4">
-    <h2 class="mb-4 text-info">Detalles del Producto</h2>
+@section Styles {
+    <link href="~/Content/Estilos_General.css" rel="stylesheet" />
+    <link href="~/Content/Estilos_Detalles.css" rel="stylesheet" />
+}
 
-    <div class="card shadow-sm border-0">
-        <div class="card-body">
-            <h5 class="card-title">Información del producto</h5>
-            <hr />
+<div class="container">
+    <h2 class="titulo-principal"><i class="bi bi-box-seam me-2"></i>Detalles del Producto</h2>
+
+    <div class="card-base" role="region" aria-labelledby="productoInfoLabel">
+        <div class="card-header-detalle" id="productoInfoLabel">
+            <i class="bi bi-info-circle"></i> Información del Producto
+        </div>
+        <div class="card-body-detalle">
             <dl class="row">
                 <dt class="col-sm-4">Código</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.codigo)</dd>
@@ -36,11 +43,11 @@
                 <dt class="col-sm-4">Foto</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.foto)</dd>
             </dl>
-
-            <div class="mt-4 d-flex justify-content-between">
-                @Html.ActionLink("Editar", "ActualizarProducto", new { id = Model.codigo }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Volver al listado", "MantLstProductos", null, new { @class = "btn btn-outline-secondary" })
-            </div>
         </div>
+    </div>
+
+    <div class="mt-4 d-flex gap-3 flex-wrap justify-content-center justify-content-md-start">
+        @Html.ActionLink("Editar", "ActualizarProducto", new { id = Model.codigo }, new { @class = "btn btn-outline-primary btn-custom" })
+        @Html.ActionLink("Volver al listado", "MantLstProductos", null, new { @class = "btn btn-secondary btn-custom" })
     </div>
 </div>

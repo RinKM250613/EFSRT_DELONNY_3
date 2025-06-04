@@ -1,0 +1,18 @@
+﻿/* ====== Estilos específicos para Crear Pedido ====== */
+
+body {
+    background-color: #f0f4f8; /* fondo específico para esta vista */
+}
+
+.card {
+    background-color: #e3f9e5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Título llamativo */
+.titulo-formulario {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}

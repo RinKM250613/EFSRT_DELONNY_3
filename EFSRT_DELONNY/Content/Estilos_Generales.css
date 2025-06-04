@@ -1,0 +1,67 @@
+﻿/* ======== GENERALES ======== */
+body {
+    background-color: #f1f3f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* ======== TITULOS ======== */
+.titulo-principal {
+    font-weight: 700;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ======== BOTONES ======== */
+.btn-custom {
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+.btn-outline-primary {
+    border: 2.5px solid #3b82f6;
+    color: #3b82f6;
+    background-color: transparent;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #3b82f6;
+        color: white;
+    }
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+}
+
+    .btn-secondary:hover {
+        background-color: #4b5563;
+    }
+
+/* ======== ANIMACIONES ======== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

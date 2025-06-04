@@ -1,56 +1,58 @@
 ﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Reportes.ReporteProducto>
 
 @{
-    ViewBag.Title = "ReporteVenta";
+    ViewBag.Title = "Reporte de Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form>
-    <label>Categoria</label>
-    @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias,
-            "Seleccione", new { @class = "form-control" })
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">💰 Reporte de Ventas por Categoría</h2>
 
-    <button class="btn btn-warning">Consultar</button>
+        @using (Html.BeginForm("ReporteVenta", "Reporte", FormMethod.Get, new { @class = "row g-3" }))
+        {
+            <div class="col-md-6">
+                <label for="categoria" class="form-label fw-bold">Categoría:</label>
+                @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias, "Seleccione", new { @class = "form-select" })
+            </div>
 
-    <a class="btn btn-danger" href="@Url.Action("DescargarPDFVentas", "Reporte", new { categoria = Request["categoria"] })">Descargar PDF</a>
+            <div class="col-12 d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-funnel-fill"></i> Consultar
+                </button>
+                <a class="btn btn-danger"
+                   href="@Url.Action("DescargarPDFVentas", "Reporte", new { categoria = Request["categoria"] })">
+                    <i class="bi bi-file-earmark-pdf-fill"></i> Descargar PDF
+                </a>
+            </div>
+        }
 
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered table-striped table-hover align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.codProducto)</th>
+                        <th>@Html.DisplayNameFor(model => model.nombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.nomCategoria)</th>
+                        <th>@Html.DisplayNameFor(model => model.TotalVendido)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@item.codProducto</td>
+                            <td>@item.nombre</td>
+                            <td class="text-center">@item.nomCategoria</td>
+                            <td class="text-end">@item.TotalVendido</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-</form>
-<h2>ReporteVenta</h2>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codProducto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nomCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalVendido)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codProducto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nomCategoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalVendido)
-        </td>
-
-    </tr>
-}
-
-</table>
+        <div class="mt-3">
+            @Html.ActionLink("← Volver", "Create", null, new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+</div>

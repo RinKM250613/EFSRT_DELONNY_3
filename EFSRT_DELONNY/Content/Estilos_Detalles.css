@@ -1,0 +1,44 @@
+﻿/* ======== DETALLES ======== */
+.card-base {
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.6s ease-in-out;
+    overflow: hidden;
+}
+
+.card-header-detalle {
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card-body-detalle {
+    padding: 32px 40px;
+}
+
+dl.row dt {
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    border-left: 4px solid #2563eb;
+    padding-left: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+dl.row dd {
+    color: #111827;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+    padding-left: 16px;
+}

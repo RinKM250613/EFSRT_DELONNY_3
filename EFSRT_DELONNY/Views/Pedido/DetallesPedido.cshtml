@@ -1,17 +1,23 @@
-﻿@model Dominio.Entidad.Negocio.Entidad.Pedido
+﻿
 
+@model Dominio.Entidad.Negocio.Entidad.Pedido
 @{
     ViewBag.Title = "Detalles del Pedido";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/Content/Estilos_Generales.css" rel="stylesheet" />
+    <link href="~/Content/Estilos_Detalles.css" rel="stylesheet" />
 }
 
-<div class="container mt-4">
-    <h2 class="text-info mb-3">Detalles del Pedido</h2>
+<div class="container">
+    <h2 class="titulo-principal"><i class="bi bi-card-list me-2"></i>Detalles del Pedido</h2>
 
-    <div class="card shadow-sm border-0">
-        <div class="card-header bg-primary text-white">
-            <strong>Información del Pedido</strong>
+    <div class="card-base" role="region" aria-labelledby="pedidoInfoLabel">
+        <div class="card-header-detalle" id="pedidoInfoLabel">
+            <i class="bi bi-clipboard-check"></i> Información del Pedido
         </div>
-        <div class="card-body">
+        <div class="card-body-detalle">
             <dl class="row">
                 <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codPedido)</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.codPedido)</dd>
@@ -45,12 +51,18 @@
 
                 <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ciudadDestino)</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.ciudadDestino)</dd>
+
+
+
+
+
+                <!-- Resto de los campos aquí -->
             </dl>
         </div>
     </div>
 
-    <div class="mt-4 d-flex gap-2">
-        @Html.ActionLink("Actualizar", "ActualizarPedido", new { id = Model.codPedido }, new { @class = "btn btn-outline-primary" })
-        @Html.ActionLink("Volver al Listado", "ListaPedido", null, new { @class = "btn btn-secondary" })
+    <div class="mt-4 d-flex gap-3 flex-wrap justify-content-center justify-content-md-start">
+        @Html.ActionLink("Actualizar", "ActualizarPedido", new { id = Model.codPedido }, new { @class = "btn btn-outline-primary btn-custom" })
+        @Html.ActionLink("Volver al Listado", "ListaPedido", null, new { @class = "btn btn-secondary btn-custom" })
     </div>
 </div>

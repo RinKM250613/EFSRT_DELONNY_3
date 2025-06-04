@@ -4,19 +4,23 @@
     ViewBag.Title = "Eliminar Proveedor";
 }
 
-<div class="container mt-4">
-    <h2 class="text-danger mb-4">Eliminar Proveedor</h2>
+@section Styles {
+    <link href="~/Content/Estilos_Eliminar.css" rel="stylesheet" />
+}
+
+<div class="container mt-5 mb-5 confirm-delete-container">
+    <h2 class="confirm-delete-title text-danger mb-4">Eliminar Proveedor</h2>
 
     @if (TempData["mensaje"] != null)
     {
-        <div class="alert alert-success">@TempData["mensaje"]</div>
+        <div class="alert alert-success confirm-delete-alert shadow-sm">@TempData["mensaje"]</div>
     }
 
-    <div class="alert alert-warning">
+    <div class="alert alert-warning confirm-delete-alert shadow-sm">
         <strong>¿Estás seguro que deseas eliminar este proveedor?</strong>
     </div>
 
-    <div class="card shadow-sm border-0 mb-4">
+    <div class="card confirm-delete-card shadow-lg border-0 mb-5">
         <div class="card-body">
             <h4 class="card-title mb-3">Datos del Proveedor</h4>
             <dl class="row">
@@ -39,9 +43,9 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="d-flex gap-2">
-            <input type="submit" value="Eliminar" class="btn btn-danger" />
-            @Html.ActionLink("Cancelar y volver", "MantLstProveedor", null, new { @class = "btn btn-secondary" })
+        <div class="d-flex gap-3 justify-content-center">
+            <input type="submit" value="Eliminar" class="btn btn-danger btn-delete" />
+            @Html.ActionLink("Cancelar y volver", "MantLstProveedor", null, new { @class = "btn btn-secondary btn-cancel" })
         </div>
     }
 </div>
