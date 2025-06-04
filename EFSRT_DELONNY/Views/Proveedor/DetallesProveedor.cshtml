@@ -1,50 +1,33 @@
 ﻿@model Dominio.Entidad.Negocio.Entidad.Proveedor
 
 @{
-    ViewBag.Title = "DetallesProveedor";
+    ViewBag.Title = "Detalles Proveedor";
 }
 
-<h2>DetallesProveedor</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Detalles del Proveedor</h2>
 
-<div>
-    <h4>Proveedor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo)
-        </dt>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Información del Proveedor</h4>
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.codigo)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.codigo)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codigo)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.nombre)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.nombre)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.codDistrito)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.codDistrito)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.fono)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.fono)</dd>
+            </dl>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codDistrito)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.codDistrito)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fono)
-        </dd>
-
-    </dl>
+    <div class="mt-3 d-flex gap-2">
+        @Html.ActionLink("Actualizar", "ActualizarProveedor", new { id = Model.codigo }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Volver a Mantenimiento Proveedor", "MantLstProveedor", null, new { @class = "btn btn-secondary" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Actualizar", "ActualizarProveedor", new {  id = Model.codigo }) |
-    @Html.ActionLink("Volver a Mantenimiento Proveedor", "MantLstProveedor")
-</p>

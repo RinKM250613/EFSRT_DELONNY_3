@@ -1,63 +1,47 @@
 ﻿@model Dominio.Entidad.Negocio.Entidad.Proveedor
 
 @{
-    ViewBag.Title = "EliminarProveedor";
+    ViewBag.Title = "Eliminar Proveedor";
 }
 
+<div class="container mt-4">
+    <h2 class="text-danger mb-4">Eliminar Proveedor</h2>
 
+    @if (TempData["mensaje"] != null)
+    {
+        <div class="alert alert-success">@TempData["mensaje"]</div>
+    }
 
-@if (TempData["mensaje"] != null)
-{
-    <div class="alert alert-success">@TempData["mensaje"]</div>
-}
-<h2>Eliminar Proveedor</h2>
+    <div class="alert alert-warning">
+        <strong>¿Estás seguro que deseas eliminar este proveedor?</strong>
+    </div>
 
-<h3>Estas seguro de eliminarlo?</h3>
-<div>
-    <h4>Proveedor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo)
-        </dt>
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Datos del Proveedor</h4>
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.codigo)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.codigo)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codigo)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.nombre)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.nombre)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.codDistrito)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.codDistrito)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.codDistrito)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.codDistrito)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fono)
-        </dd>
-
-    </dl>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.fono)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.fono)</dd>
+            </dl>
+        </div>
+    </div>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
-            @Html.ActionLink("Regresar a Mantenimiento Porveedor", "MantLstProveedor")
+        <div class="d-flex gap-2">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Cancelar y volver", "MantLstProveedor", null, new { @class = "btn btn-secondary" })
         </div>
     }
 </div>

@@ -1,64 +1,74 @@
 ﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Lista.ProveedorLista>
 
 @{
-    ViewBag.Title = "MantLstProveedor";
+    ViewBag.Title = "Mantenimiento de Proveedores";
 }
 
-<h2>MantLstProveedor</h2>
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary">Mantenimiento de Proveedores</h2>
 
-<form>
-    <label>Distrito</label>
-    @Html.DropDownList("distrito", (SelectList)ViewBag.Distrito,
-            "Seleccione", new { @class = "form-control" })
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            @using (Html.BeginForm("MantLstProveedor", "TuControlador", FormMethod.Get))
+            {
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        @Html.Label("Distrito", new { @class = "form-label" })
+                        @Html.DropDownList("distrito", (SelectList)ViewBag.Distrito, "Seleccione", new { @class = "form-select" })
+                    </div>
 
-    <label>Nombre: </label>
-    @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Escribe el proveedor" })
+                    <div class="col-md-4">
+                        @Html.Label("Nombre", new { @class = "form-label" })
+                        @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Escribe el proveedor" })
+                    </div>
 
-    <button class="btn btn-warning">Consultar</button>
-</form>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-warning w-100">Consultar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 
+    <div class="mb-3">
+        @Html.ActionLink("Ingresar nuevo Proveedor", "CrearProveedor", null, new { @class = "btn btn-success" })
+    </div>
 
-
-<p>
-    @Html.ActionLink("Ingresar nuevo Proveedor", "CrearProveedor")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nomDistrito)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fono)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nomDistrito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fono)
-        </td>
-        <td>
-            @Html.ActionLink("Actualizar", "ActualizarProveedor", new { id = item.codigo }) |
-            @Html.ActionLink("Detalles", "DetallesProveedor", new { id = item.codigo }) |
-            @Html.ActionLink("Eliminar", "EliminarProveedor", new { id = item.codigo })
-        </td>
-    </tr>
-}
-
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().codigo)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().nombre)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().nomDistrito)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().fono)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.codigo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.nomDistrito)</td>
+                        <td>@Html.DisplayFor(modelItem => item.fono)</td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="@Url.Action("ActualizarProveedor", new { id = item.codigo })" class="btn btn-outline-primary d-flex align-items-center gap-1 me-1">
+                                    <i class="bi bi-pencil-square"></i> Actualizar
+                                </a>
+                                <a href="@Url.Action("DetallesProveedor", new { id = item.codigo })" class="btn btn-outline-secondary d-flex align-items-center gap-1 me-1">
+                                    <i class="bi bi-info-circle"></i> Detalles
+                                </a>
+                                <a href="@Url.Action("EliminarProveedor", new { id = item.codigo })" class="btn btn-outline-danger d-flex align-items-center gap-1">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,82 +1,46 @@
 ﻿@model Dominio.Entidad.Negocio.Entidad.Producto
 
 @{
-    ViewBag.Title = "DetallesProducto";
+    ViewBag.Title = "Detalles del Producto";
 }
 
-<h2>DetallesProducto</h2>
+<div class="container mt-4">
+    <h2 class="mb-4 text-info">Detalles del Producto</h2>
 
-<div>
-    <h4>Producto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo)
-        </dt>
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="card-title">Información del producto</h5>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">Código</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codigo)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codigo)
-        </dd>
+                <dt class="col-sm-4">Nombre</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.nombre)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
+                <dt class="col-sm-4">Categoría</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codCategoria)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
+                <dt class="col-sm-4">Stock</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.stock)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codCategoria)
-        </dt>
+                <dt class="col-sm-4">Precio</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.precio)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codCategoria)
-        </dd>
+                <dt class="col-sm-4">Descripción</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.descripcion)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.stock)
-        </dt>
+                <dt class="col-sm-4">Proveedor</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codProveedor)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.stock)
-        </dd>
+                <dt class="col-sm-4">Foto</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.foto)</dd>
+            </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.precio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.codProveedor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.codProveedor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.foto)
-        </dd>
-
-    </dl>
+            <div class="mt-4 d-flex justify-content-between">
+                @Html.ActionLink("Editar", "ActualizarProducto", new { id = Model.codigo }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Volver al listado", "MantLstProductos", null, new { @class = "btn btn-outline-secondary" })
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "ActualizarProducto", new { id = Model.codigo  }) |
-    @Html.ActionLink("Volver a Mantenimiento Productos", "MantLstProductos")
-</p>

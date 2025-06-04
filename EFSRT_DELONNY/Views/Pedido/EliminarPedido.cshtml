@@ -1,112 +1,66 @@
 ﻿@model Dominio.Entidad.Negocio.Entidad.Pedido
 
 @{
-    ViewBag.Title = "EliminarPedido";
+    ViewBag.Title = "Eliminar Pedido";
 }
 
-<h2>EliminarPedido</h2>
+<div class="container mt-4">
+    <h2 class="text-danger mb-3">Eliminar Pedido</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Pedido</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codPedido)
-        </dt>
+    <div class="alert alert-warning">
+        <h4 class="alert-heading">¿Estás seguro de que deseas eliminar este pedido?</h4>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.codPedido)
-        </dd>
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-dark text-white">
+            <strong>Detalle del Pedido</strong>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codPedido)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codPedido)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codCliente)
-        </dt>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codCliente)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codCliente)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codCliente)
-        </dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codEmpleado)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codEmpleado)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codEmpleado)
-        </dt>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.fecPedido)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.fecPedido)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.codEmpleado)
-        </dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.fecEntrega)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.fecEntrega)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fecPedido)
-        </dt>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.fecEnvio)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.fecEnvio)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.fecPedido)
-        </dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.estadoEnvio)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.estadoEnvio)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fecEntrega)
-        </dt>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.cantidad)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.cantidad)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.fecEntrega)
-        </dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.destino)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.destino)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fecEnvio)
-        </dt>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.direccionDestino)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.direccionDestino)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.fecEnvio)
-        </dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ciudadDestino)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ciudadDestino)</dd>
+            </dl>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.estadoEnvio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estadoEnvio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.destino)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.destino)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.direccionDestino)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.direccionDestino)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ciudadDestino)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ciudadDestino)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="d-flex gap-2">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-secondary" })
         </div>
     }
 </div>
