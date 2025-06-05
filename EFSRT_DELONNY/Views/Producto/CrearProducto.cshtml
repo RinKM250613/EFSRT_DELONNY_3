@@ -73,7 +73,7 @@
 
                     <div class="col-md-4">
                         @Html.LabelFor(m => m.foto, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.foto, new { htmlAttributes = new { @class = "form-control", placeholder = "URL de la foto" } })
+                        @Html.EditorFor(m => m.foto, new { htmlAttributes = new { @class = "form-control", placeholder = "foto" } })
                         @Html.ValidationMessageFor(m => m.foto, "", new { @class = "text-danger small mt-1" })
                     </div>
 
