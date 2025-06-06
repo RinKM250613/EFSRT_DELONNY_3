@@ -87,3 +87,11 @@
         </div>
     </div>
 </div>
+
+
+<div>
+    @for (int i = 0; i < (int)ViewBag.npags; i++)
+    {
+        @Html.ActionLink((i + 1).ToString(), "MantLstProductos", new { p = i, categoria = ViewBag.categoria, nombre = ViewBag.nombres }, new { @class = "btn btn-secondary" })
+    }
+</div>

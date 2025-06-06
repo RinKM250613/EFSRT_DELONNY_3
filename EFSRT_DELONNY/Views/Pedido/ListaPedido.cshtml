@@ -110,3 +110,10 @@
         </table>
     </div>
 </div>
+
+<div>
+    @for (int i = 0; i < (int)ViewBag.npags; i++)
+    {
+        @Html.ActionLink((i + 1).ToString(), "ListaPedido", new { fecha = ViewBag.fecha, cliente = ViewBag.cliente, p = i }, new { @class = "btn btn-secondary" })
+    }
+</div>

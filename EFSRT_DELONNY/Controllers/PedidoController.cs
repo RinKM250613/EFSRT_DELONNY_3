@@ -1,4 +1,5 @@
-﻿using Dominio.Entidad.Negocio.Entidad;
+﻿using Dominio.Entidad.Negocio.Abstraccion;
+using Dominio.Entidad.Negocio.Entidad;
 using Dominio.Entidad.Negocio.Entidad.Lista;
 using Infraestructura.SQL.Negocios;
 using System;
@@ -14,9 +15,24 @@ namespace EFSRT_DELONNY.Controllers
         pedidoDAO _pedido = new pedidoDAO();
         clienteDTO _cliente = new clienteDTO();
         empleadoDTO _empleado = new empleadoDTO();
-        public ActionResult ListaPedido(DateTime? fecha = null, string cliente = "")
+        public ActionResult ListaPedido(DateTime? fecha = null, string cliente = "", int p = 0)
         {
-            return View(_pedido.GetByDateAndDni(fecha, cliente));
+            //Paginacion
+
+            IEnumerable<PedidoLista> lst = _pedido.GetByDateAndDni(fecha, cliente);
+
+
+            int c = lst.Count();
+            int f = 10;
+
+            int npags = c % f == 0 ? c / f : c / f + 1;
+
+            ViewBag.p = p;
+            ViewBag.fecha = fecha;
+            ViewBag.cliente = cliente;
+            ViewBag.npags = npags;
+
+            return View(lst.Skip(f * p).Take(f));
         }
 
 

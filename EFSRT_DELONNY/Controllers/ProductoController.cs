@@ -16,7 +16,7 @@ namespace EFSRT_DELONNY.Controllers
         categoriaDTO _categoria = new categoriaDTO();
         proveedorDTO _proveedor = new proveedorDTO();
         productoDAO _producto = new productoDAO();
-        public ActionResult MantLstProductos(string categoria = "", string nombre = "")
+        public ActionResult MantLstProductos(string categoria = "", string nombre = "", int p = 0)
         {
             ViewBag.Categorias = new SelectList(_categoria.GetAll(), "codigo", "nombre");
 
@@ -24,7 +24,22 @@ namespace EFSRT_DELONNY.Controllers
             objProducto.codCategoria = categoria;
             objProducto.nombre = nombre;
 
-            return View(_producto.GetByNameAndCombo(objProducto));
+            //Paginacion
+
+            IEnumerable<Producto> lst = _producto.GetByNameAndCombo(objProducto);
+
+
+            int c = lst.Count();
+            int f = 10;
+
+            int npags = c % f == 0 ? c / f : c / f + 1;
+
+            ViewBag.p = p;
+            ViewBag.categoria = categoria;
+            ViewBag.nombre = nombre;
+            ViewBag.npags = npags;
+
+            return View(lst.Skip(f * p).Take(f));
         }
 
         [HttpGet]
