@@ -14,10 +14,12 @@
 
     <div class="card shadow-sm border-0">
         <div class="card-body">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.HiddenFor(model => model.codigo)
 
                 <div class="mb-3">
                     @Html.LabelFor(model => model.codigo, new { @class = "form-label" })
@@ -63,11 +65,19 @@
 
                 <div class="mb-3">
                     @Html.LabelFor(model => model.foto, new { @class = "form-label" })
-                    @Html.EditorFor(model => model.foto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.foto, new { type = "file", @class = "form-control", accept = "image/*" })
                     @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
+
+                    @if (!string.IsNullOrEmpty(Model.fotoRuta))
+                    {
+                        <div class="mt-2">
+                            <label class="form-label">Imagen actual:</label><br />
+                            <img src="@Url.Content(Model.fotoRuta)" alt="Imagen actual" style="max-height: 150px;" class="img-thumbnail" />
+                        </div>
+                    }
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-4">
                     <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
                     @Html.ActionLink("Volver a Mantenimiento Productos", "MantLstProductos", null, new { @class = "btn btn-outline-secondary" })
                 </div>

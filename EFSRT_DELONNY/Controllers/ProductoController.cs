@@ -83,11 +83,35 @@ namespace EFSRT_DELONNY.Controllers
         [HttpPost]
         public ActionResult ActualizarProducto(Producto registro)
         {
+            // Si se sube una nueva imagen
+            if (registro.foto != null && registro.foto.ContentLength > 0)
+            {
+                var path = Server.MapPath("~/Content/Images");
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                var fileName = Path.GetFileName(registro.foto.FileName);
+                var filePath = Path.Combine(path, fileName);
+
+                registro.foto.SaveAs(filePath);
+
+                // Nueva imagen, se actualiza la ruta
+                registro.fotoRuta = "/Content/Images/" + fileName;
+            }
+            else
+            {
+                // No se subió imagen: conservar la anterior
+                var productoOriginal = _producto.Find(registro.codigo);
+                registro.fotoRuta = productoOriginal.fotoRuta;
+            }
+
             ViewBag.mensaje = _producto.Update(registro);
 
             ViewBag.Categorias = new SelectList(_categoria.GetAll(), "codigo", "nombre", registro.codCategoria);
             ViewBag.Proveedores = new SelectList(_proveedor.GetAll(), "codigo", "nombre", registro.codProveedor);
-
 
             return View(registro);
         }
