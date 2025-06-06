@@ -35,7 +35,7 @@ namespace Infraestructura.SQL.Negocios
                         cmd.Parameters.AddWithValue("@Descripcion", registro.descripcion);
                         cmd.Parameters.AddWithValue("@IdCategoria", registro.codCategoria);
                         cmd.Parameters.AddWithValue("@IdProveedor", registro.codProveedor);
-                        cmd.Parameters.AddWithValue("@Foto", registro.foto);
+                        cmd.Parameters.AddWithValue("@Foto", registro.fotoRuta);
 
                         int c = cmd.ExecuteNonQuery();
                         mensaje = $"Se ha registrado {c} producto";
@@ -69,7 +69,7 @@ namespace Infraestructura.SQL.Negocios
                         cmd.Parameters.AddWithValue("@Descripcion", registro.descripcion);
                         cmd.Parameters.AddWithValue("@IdCategoria", registro.codCategoria);
                         cmd.Parameters.AddWithValue("@IdProveedor", registro.codProveedor);
-                        cmd.Parameters.AddWithValue("@Foto", registro.foto);
+                        cmd.Parameters.AddWithValue("@Foto", registro.fotoRuta);
 
                         int c = cmd.ExecuteNonQuery();
                         mensaje = $"Se ha actualizado {c} producto";
@@ -106,7 +106,7 @@ namespace Infraestructura.SQL.Negocios
                                 precio = reader.GetDecimal(4),
                                 descripcion = reader.GetString(5),
                                 codProveedor = reader.GetString(6),
-                                foto = reader.IsDBNull(7) ? "" : reader.GetString(7)
+                                fotoRuta = reader.IsDBNull(7) ? "" : reader.GetString(7)
                             };
                         }
                     }

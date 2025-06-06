@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Dominio.Entidad.Negocio.Entidad
 {
@@ -21,7 +22,12 @@ namespace Dominio.Entidad.Negocio.Entidad
 
         [Display(Name = "Proveedor"), Required]
         public string codProveedor { get; set; }
-        [Display(Name = "Foto"), Required] public string foto { get; set; }
+
+        [Display(Name = "Foto"), Required]
+        public HttpPostedFileBase foto { get; set; }
+
+        // Mantén esta propiedad para guardar la ruta o nombre de la imagen en la BD
+        public string fotoRuta { get; set; }
 
     }
 }

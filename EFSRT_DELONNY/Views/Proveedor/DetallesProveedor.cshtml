@@ -19,11 +19,11 @@
         </div>
         <div class="card-body-detalle">
             <dl class="row">
-                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codigo)</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.codigo)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codigoProv)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.codigoProv)</dd>
 
-                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.nombre)</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.nombre)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.nombreProv)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.nombreProv)</dd>
 
                 <dt class="col-sm-4">@Html.DisplayNameFor(model => model.codDistrito)</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.codDistrito)</dd>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="mt-4 d-flex gap-3 flex-wrap justify-content-center justify-content-md-start">
-        @Html.ActionLink("Actualizar", "ActualizarProveedor", new { id = Model.codigo }, new { @class = "btn btn-outline-primary btn-custom" })
+        @Html.ActionLink("Actualizar", "ActualizarProveedor", new { id = Model.codigoProv }, new { @class = "btn btn-outline-primary btn-custom" })
         @Html.ActionLink("Volver al listado", "MantLstProveedor", null, new { @class = "btn btn-secondary btn-custom" })
     </div>
 </div>

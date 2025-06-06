@@ -17,7 +17,7 @@
         <div class="alert alert-info text-center">@ViewBag.mensaje</div>
     }
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -30,14 +30,14 @@
                         @Html.LabelFor(m => m.codigo, new { @class = "form-label" })
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-upc"></i></span>
-                            @Html.EditorFor(m => m.codigo, new { htmlAttributes = new { @class = "form-control", placeholder = "Código del producto" } })
+                            @Html.EditorFor(m => m.codigo, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: PROD001" } })
                         </div>
                         @Html.ValidationMessageFor(m => m.codigo, "", new { @class = "text-danger small mt-1" })
                     </div>
 
                     <div class="col-md-6">
                         @Html.LabelFor(m => m.nombre, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del producto" } })
+                        @Html.EditorFor(m => m.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: Tarro de chocolate" } })
                         @Html.ValidationMessageFor(m => m.nombre, "", new { @class = "text-danger small mt-1" })
                     </div>
 
@@ -57,7 +57,7 @@
                         @Html.LabelFor(m => m.stock, new { @class = "form-label" })
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-stack"></i></span>
-                            @Html.EditorFor(m => m.stock, new { htmlAttributes = new { @class = "form-control", placeholder = "Stock" } })
+                            @Html.EditorFor(m => m.stock, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: 500" } })
                         </div>
                         @Html.ValidationMessageFor(m => m.stock, "", new { @class = "text-danger small mt-1" })
                     </div>
@@ -73,7 +73,7 @@
 
                     <div class="col-md-4">
                         @Html.LabelFor(m => m.foto, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.foto, new { htmlAttributes = new { @class = "form-control", placeholder = "foto" } })
+                        <input type="file" name="Foto" class="form-control" accept="image/*" />
                         @Html.ValidationMessageFor(m => m.foto, "", new { @class = "text-danger small mt-1" })
                     </div>
 

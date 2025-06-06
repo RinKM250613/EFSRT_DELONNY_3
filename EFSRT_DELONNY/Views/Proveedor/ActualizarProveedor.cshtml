@@ -17,15 +17,15 @@
                 @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
 
                 <div class="mb-3">
-                    @Html.LabelFor(model => model.codigo, htmlAttributes: new { @class = "form-label" })
-                    @Html.EditorFor(model => model.codigo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.codigo, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.codigoProv, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.codigoProv, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.codigoProv, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
-                    @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "form-label" })
-                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.nombreProv, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.nombreProv, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nombreProv, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">

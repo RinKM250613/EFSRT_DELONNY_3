@@ -22,18 +22,18 @@
 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        @Html.LabelFor(m => m.codigo, new { @class = "form-label" })
+                        @Html.LabelFor(m => m.codigoProv, new { @class = "form-label" })
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-upc-scan"></i></span>
-                            @Html.EditorFor(m => m.codigo, new { htmlAttributes = new { @class = "form-control", placeholder = "Código del proveedor" } })
+                            @Html.EditorFor(m => m.codigoProv, new { htmlAttributes = new { @class = "form-control", placeholder = "Código del proveedor" } })
                         </div>
-                        @Html.ValidationMessageFor(m => m.codigo, "", new { @class = "text-danger small mt-1" })
+                        @Html.ValidationMessageFor(m => m.codigoProv, "", new { @class = "text-danger small mt-1" })
                     </div>
 
                     <div class="col-md-6">
-                        @Html.LabelFor(m => m.nombre, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del proveedor" } })
-                        @Html.ValidationMessageFor(m => m.nombre, "", new { @class = "text-danger small mt-1" })
+                        @Html.LabelFor(m => m.nombreProv, new { @class = "form-label" })
+                        @Html.EditorFor(m => m.nombreProv, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del proveedor" } })
+                        @Html.ValidationMessageFor(m => m.nombreProv, "", new { @class = "text-danger small mt-1" })
                     </div>
 
                     <div class="col-md-6">

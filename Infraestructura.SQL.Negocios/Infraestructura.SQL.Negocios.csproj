@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="categoriaDTO.cs" />
     <Compile Include="clienteDTO.cs" />
-    <Compile Include="detallePedidoDTO.cs" />
     <Compile Include="distritoDTO.cs" />
     <Compile Include="empleadoDTO.cs" />
     <Compile Include="pedidoDAO.cs" />
