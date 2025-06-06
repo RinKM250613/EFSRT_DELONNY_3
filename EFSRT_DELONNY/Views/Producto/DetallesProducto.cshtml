@@ -40,8 +40,17 @@
                 <dt class="col-sm-4">Proveedor</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.codProveedor)</dd>
 
-                <dt class="col-sm-4">Foto</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.foto)</dd>
+
+                <div class="mb-3">
+                   
+                    @if (!string.IsNullOrEmpty(Model.fotoRuta))
+                    {
+                        <div class="mt-2">
+                            <label class="form-label">Imagen actual:</label><br />
+                            <img src="@Url.Content(Model.fotoRuta)" alt="Imagen actual" style="max-height: 150px;" class="img-thumbnail" />
+                        </div>
+                    }
+                </div>
             </dl>
         </div>
     </div>
