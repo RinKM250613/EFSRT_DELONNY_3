@@ -12,6 +12,9 @@ namespace Dominio.Entidad.Negocio.Entidad
         [Display(Name = "Cod Prov"), Required]
         public string codigo { get; set; }
 
+        [Display(Name = "RUC"), Required]
+        public string ruc { get; set; }
+
         [Display(Name = "Nombre"), Required] public string nombre { get; set; }
 
         [Display(Name = "Distrito"), Required]

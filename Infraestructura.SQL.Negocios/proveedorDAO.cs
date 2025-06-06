@@ -28,6 +28,7 @@ namespace Infraestructura.SQL.Negocios
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@IdProveedor", registro.codigo);
+                        cmd.Parameters.AddWithValue("@RucProveedor", registro.ruc);
                         cmd.Parameters.AddWithValue("@NomProveedor", registro.nombre);
                         cmd.Parameters.AddWithValue("@IdDistrito", registro.codDistrito);
                         cmd.Parameters.AddWithValue("@FonoProveedor", registro.fono);
@@ -45,10 +46,6 @@ namespace Infraestructura.SQL.Negocios
             return mensaje;
 
 
-
-
-
-
         }
         public string Update(Proveedor registro)
         {
@@ -64,6 +61,7 @@ namespace Infraestructura.SQL.Negocios
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@IdProveedor", registro.codigo);
+                        cmd.Parameters.AddWithValue("@RucProveedor", registro.ruc);
                         cmd.Parameters.AddWithValue("@NomProveedor", registro.nombre);
                         cmd.Parameters.AddWithValue("@IdDistrito", registro.codDistrito);
                         cmd.Parameters.AddWithValue("@FonoProveedor", registro.fono);
@@ -79,10 +77,6 @@ namespace Infraestructura.SQL.Negocios
                 }
             }
             return mensaje;
-
-
-
-
 
         }
 
@@ -131,9 +125,10 @@ namespace Infraestructura.SQL.Negocios
                             reg = new Proveedor()
                             {
                                 codigo = reader.GetString(0),
-                                nombre = reader.GetString(1),
-                                codDistrito = reader.GetInt32(2),
-                                fono = reader.GetString(3)
+                                ruc = reader.GetString(1),
+                                nombre = reader.GetString(2),
+                                codDistrito = reader.GetInt32(3),
+                                fono = reader.GetString(4)
 
                             };
                         }
@@ -160,10 +155,10 @@ namespace Infraestructura.SQL.Negocios
                             tempo.Add(new ProveedorLista()
                             {
                                 codigo = reader.GetString(0),
-                                nombre = reader.GetString(1),
-                                nomDistrito = reader.GetString(2),
-                                fono = reader.GetString(3)
-                               
+                                ruc = reader.GetString(1),
+                                nombre = reader.GetString(2),
+                                codDistrito = reader.GetInt32(3),
+                                fono = reader.GetString(4)
                             });
                         }
                     }
@@ -194,9 +189,10 @@ namespace Infraestructura.SQL.Negocios
                             tempo.Add(new ProveedorLista()
                             {
                                 codigo = reader.GetString(0),
-                                nombre = reader.GetString(1),
-                                nomDistrito = reader.GetString(2),
-                                fono = reader.GetString(3)
+                                ruc = reader.GetString(1),
+                                nombre = reader.GetString(2),
+                                nomDistrito = reader.GetString(3),
+                                fono = reader.GetString(4)
                             });
                         }
                     }

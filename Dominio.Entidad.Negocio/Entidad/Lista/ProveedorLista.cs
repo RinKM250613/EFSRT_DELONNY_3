@@ -11,6 +11,9 @@ namespace Dominio.Entidad.Negocio.Entidad.Lista
     {
         [Display(Name = "Cod Prov")]
         public string codigo { get; set; }
+
+        [Display(Name = "RUC")]
+        public string ruc { get; set; }
         [Display(Name = "Nombre")] public string nombre { get; set; }
 
         [Display(Name = "Distrito")]
