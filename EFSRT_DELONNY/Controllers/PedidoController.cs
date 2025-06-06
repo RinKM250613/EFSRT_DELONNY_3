@@ -16,7 +16,7 @@ namespace EFSRT_DELONNY.Controllers
         empleadoDTO _empleado = new empleadoDTO();
         public ActionResult ListaPedido(DateTime? fecha = null, string cliente = "")
         {
-            return View(_pedido.GetByDateAndName(fecha, cliente));
+            return View(_pedido.GetByDateAndDni(fecha, cliente));
         }
 
 
@@ -26,27 +26,40 @@ namespace EFSRT_DELONNY.Controllers
             ViewBag.Cliente = new SelectList(_cliente.GetAll(), "codigo", "nombre");
             ViewBag.Empleado = new SelectList(_empleado.GetAll(), "codigo", "nombre");
 
+            var estados = new List<string> { "ENTREGADO", "ESPERANDO", "CANCELADO" };
+            ViewBag.EstadoEnvio = new SelectList(estados);
+
             return View(new Pedido());
         }
 
         [HttpPost]
         public ActionResult CrearPedido(Pedido ped)
         {
+
             ViewBag.mensaje = _pedido.Add(ped);
             ViewBag.Empleado = new SelectList(_empleado.GetAll(), "codigo", "nombre", ped.codEmpleado);
             ViewBag.Cliente = new SelectList(_cliente.GetAll(), "codigo", "nombre", ped.codCliente);
 
+            var estados = new List<string> { "ENTREGADO", "ESPERANDO", "CANCELADO" };
+            ViewBag.EstadoEnvio = new SelectList(estados, ped.estadoEnvio);
+
             return View(ped);
         }
+
         [HttpGet]
         public ActionResult ActualizarPedido(string id = "")
         {
             Pedido ped = _pedido.Find(id);
+
             ViewBag.Empleado = new SelectList(_empleado.GetAll(), "codigo", "nombre", ped.codEmpleado);
             ViewBag.Cliente = new SelectList(_cliente.GetAll(), "codigo", "nombre", ped.codCliente);
 
+            var estados = new List<string> { "ENTREGADO", "ESPERANDO", "CANCELADO" };
+            ViewBag.EstadoEnvio = new SelectList(estados, ped.estadoEnvio);
+
             return View(ped);
         }
+
 
         [HttpPost]
         public ActionResult ActualizarPedido(Pedido ped)
@@ -55,6 +68,9 @@ namespace EFSRT_DELONNY.Controllers
 
             ViewBag.Empleado = new SelectList(_empleado.GetAll(), "codigo", "nombre", ped.codEmpleado);
             ViewBag.Cliente = new SelectList(_cliente.GetAll(), "codigo", "nombre", ped.codCliente);
+
+            var estados = new List<string> { "ENTREGADO", "ESPERANDO", "CANCELADO" };
+            ViewBag.EstadoEnvio = new SelectList(estados, ped.estadoEnvio); 
 
             return View(ped);
         }

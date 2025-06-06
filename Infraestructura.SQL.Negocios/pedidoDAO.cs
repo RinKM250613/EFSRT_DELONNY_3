@@ -35,7 +35,6 @@ namespace Infraestructura.SQL.Negocios
                         cmd.Parameters.AddWithValue("@FechaEnvio", pedido.fecEnvio);
                         cmd.Parameters.AddWithValue("@EstadoEnvio", pedido.estadoEnvio);
                         cmd.Parameters.AddWithValue("@Cantidad", pedido.cantidad);
-                        cmd.Parameters.AddWithValue("@Destino", pedido.destino);
                         cmd.Parameters.AddWithValue("@DireccionDestino", pedido.direccionDestino);
                         cmd.Parameters.AddWithValue("@CiudadDestino", pedido.ciudadDestino);
 
@@ -102,9 +101,8 @@ namespace Infraestructura.SQL.Negocios
                                 fecEnvio = reader.GetDateTime(5).Date,
                                 estadoEnvio = reader.GetString(6),
                                 cantidad = reader.GetInt16(7),
-                                destino = reader.GetString(8),
-                                direccionDestino = reader.GetString(9),
-                                ciudadDestino = reader.GetString(10),
+                                direccionDestino = reader.GetString(8),
+                                ciudadDestino = reader.GetString(9),
 
                             };
                         }
@@ -133,7 +131,6 @@ namespace Infraestructura.SQL.Negocios
                         cmd.Parameters.AddWithValue("@FechaEnvio", pedido.fecEnvio);
                         cmd.Parameters.AddWithValue("@EstadoEnvio", pedido.estadoEnvio);
                         cmd.Parameters.AddWithValue("@Cantidad", pedido.cantidad);
-                        cmd.Parameters.AddWithValue("@Destino", pedido.destino);
                         cmd.Parameters.AddWithValue("@DireccionDestino", pedido.direccionDestino);
                         cmd.Parameters.AddWithValue("@CiudadDestino", pedido.ciudadDestino);
 
@@ -171,7 +168,7 @@ namespace Infraestructura.SQL.Negocios
                                 fecEnvio = reader.GetDateTime(4),
                                 estadoEnvio = reader.GetString(5),
                                 cantidad = reader.GetInt16(6),
-                                direccionDestino = reader.GetString(7),
+                                direccionDestino = reader.GetString(7)
                             });
                         }
                     }
@@ -180,14 +177,14 @@ namespace Infraestructura.SQL.Negocios
             return tempo;
         }
 
-        public IEnumerable<PedidoLista> GetByDateAndName(DateTime? fechaPed, string nombre)
+        public IEnumerable<PedidoLista> GetByDateAndDni(DateTime? fechaPed, string dni)
         {
             string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
             List<PedidoLista> tempo = new List<PedidoLista>();
             using (SqlConnection con = new SqlConnection(cadena))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("USP_FILTRAR_FECHA_X_NOMBRE", con))
+                using (SqlCommand cmd = new SqlCommand("USP_FILTRAR_FECHA_X_DNI", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     if (fechaPed.HasValue)
@@ -199,13 +196,13 @@ namespace Infraestructura.SQL.Negocios
                         cmd.Parameters.AddWithValue("@FecRegis", DBNull.Value);
                     }
 
-                    if (string.IsNullOrWhiteSpace(nombre))
+                    if (string.IsNullOrWhiteSpace(dni))
                     {
-                        cmd.Parameters.AddWithValue("@NomCli", "");
+                        cmd.Parameters.AddWithValue("@DniCli", "");
                     }
                     else
                     {
-                        cmd.Parameters.AddWithValue("@NomCli", nombre.Trim());
+                        cmd.Parameters.AddWithValue("@DniCli", dni.Trim());
                     }
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -215,12 +212,13 @@ namespace Infraestructura.SQL.Negocios
                             {
                                 codPedido = reader.GetString(0),
                                 nomCliente = reader.GetString(1),
-                                nomEmpleado = reader.GetString(2),
-                                fecPedido = reader.GetDateTime(3).Date,
-                                fecEnvio = reader.GetDateTime(4).Date,
-                                estadoEnvio = reader.GetString(5),
-                                cantidad = reader.GetInt16(6),
-                                direccionDestino = reader.GetString(7),
+                                dniCli = reader.GetString(2),
+                                nomEmpleado = reader.GetString(3),
+                                fecPedido = reader.GetDateTime(4).Date,
+                                fecEnvio = reader.GetDateTime(5).Date,
+                                estadoEnvio = reader.GetString(6),
+                                cantidad = reader.GetInt16(7),
+                                direccionDestino = reader.GetString(8),
                             });
                         }
                     }

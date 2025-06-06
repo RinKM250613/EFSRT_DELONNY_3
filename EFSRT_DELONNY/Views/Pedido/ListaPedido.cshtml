@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label class="form-label fw-semibold">Nombre del Cliente</label>
-                    @Html.TextBox("cliente", Request["cliente"], new { @class = "form-control", placeholder = "Escribe el cliente" })
+                    <label class="form-label fw-semibold">Dni del Cliente</label>
+                    @Html.TextBox("cliente", Request["cliente"], new { @class = "form-control", placeholder = "Escribe el DNI" })
                 </div>
 
                 <div class="col-md-4 d-flex align-items-end">
@@ -46,6 +46,7 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.First().codPedido)</th>
                     <th>@Html.DisplayNameFor(model => model.First().nomCliente)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().dniCli)</th>
                     <th>@Html.DisplayNameFor(model => model.First().nomEmpleado)</th>
                     <th>@Html.DisplayNameFor(model => model.First().fecPedido)</th>
                     <th>@Html.DisplayNameFor(model => model.First().fecEnvio)</th>
@@ -68,7 +69,7 @@
                         case "esperando":
                             estadoClass = "text-warning fw-bold"; // amarillo
                             break;
-                        case "despachado":
+                        case "cancelado":
                             estadoClass = "text-danger fw-bold"; // rojo
                             break;
                         default:
@@ -79,6 +80,7 @@
                     <tr>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.codPedido)</td>
                         <td>@Html.DisplayFor(modelItem => item.nomCliente)</td>
+                        <td>@Html.DisplayFor(modelItem => item.dniCli)</td>
                         <td>@Html.DisplayFor(modelItem => item.nomEmpleado)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.fecPedido)</td>
                         <td class="text-center">@Html.DisplayFor(modelItem => item.fecEnvio)</td>

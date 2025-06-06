@@ -12,7 +12,14 @@
 <div class="container mt-5 mb-5">
     <h2 class="text-center titulo-formulario mb-4">📦 Registrar Nuevo Pedido</h2>
 
-    @using (Html.BeginForm())
+    @if (!string.IsNullOrEmpty(ViewBag.mensaje))
+    {
+        <div class="alert alert-danger mt-4 text-center fw-semibold animate__animated animate__shakeX">
+            @ViewBag.mensaje
+        </div>
+    }
+
+    @using (Html.BeginForm("CrearPedido", "Pedido", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -33,12 +40,7 @@
 
                     <div class="col-md-6">
                         @Html.LabelFor(m => m.estadoEnvio, new { @class = "form-label" })
-                        <select asp-for="estadoEnvio" class="form-select">
-                            <option value="">Seleccione estado</option>
-                            <option value="Entregado" class="estado-entregado">Entregado</option>
-                            <option value="Pendiente" class="estado-pendiente">Pendiente</option>
-                            <option value="Cancelado" class="estado-cancelado">Cancelado</option>
-                        </select>
+                        @Html.DropDownListFor(m => m.estadoEnvio, (SelectList)ViewBag.EstadoEnvio, "Seleccione estado", new { @class = "form-select" })
                         @Html.ValidationMessageFor(m => m.estadoEnvio, "", new { @class = "text-danger small mt-1" })
                     </div>
 
@@ -67,16 +69,17 @@
                     </div>
 
                     <div class="col-md-4">
+                        @Html.LabelFor(m => m.fecEnvio, new { @class = "form-label" })
+                        @Html.EditorFor(m => m.fecEnvio, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(m => m.fecEnvio, "", new { @class = "text-danger small mt-1" })
+                    </div>
+
+                    <div class="col-md-4">
                         @Html.LabelFor(m => m.fecEntrega, new { @class = "form-label" })
                         @Html.EditorFor(m => m.fecEntrega, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                         @Html.ValidationMessageFor(m => m.fecEntrega, "", new { @class = "text-danger small mt-1" })
                     </div>
 
-                    <div class="col-md-4">
-                        @Html.LabelFor(m => m.fecEnvio, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.fecEnvio, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                        @Html.ValidationMessageFor(m => m.fecEnvio, "", new { @class = "text-danger small mt-1" })
-                    </div>
                 </div>
 
                 <div class="section-divider"></div>
@@ -90,12 +93,6 @@
                             @Html.EditorFor(m => m.cantidad, new { htmlAttributes = new { @class = "form-control", placeholder = "Cantidad" } })
                         </div>
                         @Html.ValidationMessageFor(m => m.cantidad, "", new { @class = "text-danger small mt-1" })
-                    </div>
-
-                    <div class="col-md-4">
-                        @Html.LabelFor(m => m.destino, new { @class = "form-label" })
-                        @Html.EditorFor(m => m.destino, new { htmlAttributes = new { @class = "form-control", placeholder = "Destino" } })
-                        @Html.ValidationMessageFor(m => m.destino, "", new { @class = "text-danger small mt-1" })
                     </div>
 
                     <div class="col-md-4">
@@ -120,12 +117,6 @@
         </div>
     }
 
-    @if (!string.IsNullOrEmpty(ViewBag.mensaje))
-    {
-        <div class="alert alert-danger mt-4 text-center fw-semibold animate__animated animate__shakeX">
-            @ViewBag.mensaje
-        </div>
-    }
 </div>
 
 @section Scripts {

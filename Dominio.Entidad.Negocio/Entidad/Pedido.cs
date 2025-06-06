@@ -23,7 +23,6 @@ namespace Dominio.Entidad.Negocio.Entidad
         [Display(Name = "Fech Envio"), Required] public DateTime fecEnvio { get; set; }
         [Display(Name = "Estado"), Required] public string estadoEnvio { get; set; }
         [Display(Name = "Cantidad"), Required] public int cantidad { get; set; }
-        [Display(Name = "Destino"), Required] public string destino { get; set; }
         [Display(Name = "Dirección"), Required] public string direccionDestino { get; set; }
         [Display(Name = "Ciudad"), Required] public string ciudadDestino { get; set; }
 
