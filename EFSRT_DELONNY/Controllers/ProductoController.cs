@@ -154,6 +154,11 @@ namespace EFSRT_DELONNY.Controllers
             return RedirectToAction("MantLstProductos");
         }
 
+        //VISTA CLIENTE
 
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }
