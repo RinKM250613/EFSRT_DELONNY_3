@@ -156,9 +156,11 @@ namespace EFSRT_DELONNY.Controllers
 
         //VISTA CLIENTE
 
-        public ActionResult Index()
+        [HttpGet]
+        public JsonResult ObtenerProductosGeneral()
         {
-            return View();
+            var lista = _producto.GetAll(); // Tu lógica aquí
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
     }
 }

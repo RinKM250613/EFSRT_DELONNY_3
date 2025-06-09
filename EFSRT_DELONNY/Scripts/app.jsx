@@ -1,10 +1,23 @@
-﻿import React from 'react';
-import { createRoot } from 'react-dom/client';
+﻿import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
+import ProductoLista from "./components/ProductoLista";
 
 const App = () => {
-    return <h2>Hola desde React dentro de ASP.NET MVC</h2>;
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        fetch("/Producto/ObtenerProductosGeneral")  // Action de tu controller
+            .then((res) => res.json())
+            .then((data) => setProductos(data))
+            .catch((err) => console.error("Error cargando productos:", err));
+    }, []);
+
+    return (
+        <div>
+            <ProductoLista productos={productos} />
+        </div>
+    );
 };
 
-const container = document.getElementById("react-root");
-const root = createRoot(container);
+const root = ReactDOM.createRoot(document.getElementById("react-root"));
 root.render(<App />);

@@ -162,7 +162,7 @@
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
-    <Content Include="Scripts\app.jsx" />
+    <Content Include="Scripts\App.jsx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -170,6 +170,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Scripts\components\ProductoItem.jsx" />
+    <Content Include="Scripts\components\ProductoLista.jsx" />
     <Content Include="webpack.config.js" />
     <Content Include=".babelrc" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
