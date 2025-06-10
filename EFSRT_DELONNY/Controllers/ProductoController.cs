@@ -156,11 +156,71 @@ namespace EFSRT_DELONNY.Controllers
 
         //VISTA CLIENTE
 
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
         public JsonResult ObtenerProductosGeneral()
         {
-            var lista = _producto.GetAll(); // Tu lógica aquí
+            var lista = _producto.GetAll();
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Tienda(string categoria = "", string nombre = "", int p = 0)
+        {
+            ViewBag.Categorias = new SelectList(_categoria.GetAll(), "codigo", "nombre");
+
+                Producto objProducto = new Producto();
+                objProducto.codCategoria = categoria;
+                objProducto.nombre = nombre;
+
+                //Paginacion
+
+                IEnumerable<Producto> lst = _producto.GetByNameAndCombo(objProducto);
+
+
+                int c = lst.Count();
+                int f = 10;
+
+                int npags = c % f == 0 ? c / f : c / f + 1;
+
+                ViewBag.p = p;
+                ViewBag.categoria = categoria;
+                ViewBag.nombre = nombre;
+                ViewBag.npags = npags;
+                return View(lst.Skip(f * p).Take(f));
+
+        }
+
+        public JsonResult TiendaJson(string categoria = "", string nombre = "", int p = 0)
+        {
+            Producto objProducto = new Producto
+            {
+                codCategoria = categoria,
+                nombre = nombre
+            };
+
+            IEnumerable<Producto> lst = _producto.GetByNameAndCombo(objProducto);
+
+            int c = lst.Count();
+            int f = 10;
+
+            int npags = c % f == 0 ? c / f : c / f + 1;
+
+            var paginatedList = lst.Skip(f * p).Take(f).ToList();
+
+            return Json(new
+            {
+                productos = paginatedList,
+                pagina = p,
+                totalPaginas = npags
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //JSONS
+
     }
 }

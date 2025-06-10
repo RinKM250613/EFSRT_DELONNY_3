@@ -220,6 +220,8 @@
     <Content Include="Views\Reporte\DescargarPDFVentas.cshtml" />
     <Content Include="Views\Reporte\ReporteFechas.cshtml" />
     <Content Include="Views\Reporte\DescargarPDFFechas.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\Tienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

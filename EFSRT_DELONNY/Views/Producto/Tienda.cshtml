@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Dominio.Entidad.Negocio.Entidad.Producto>
+
+@{
+    ViewBag.Title = "Tienda";
+}
+
+<h2>Tienda</h2>
+
+
+<form id="formBusqueda" method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <label class="form-label fw-semibold" for="categoria">Categoría</label>
+        @Html.DropDownList("categoria", (SelectList)ViewBag.Categorias, "Seleccione", new
+        {
+            @class = "form-select",
+            id = "categoria"
+        })
+    </div>
+    <div class="col-md-4">
+        <label class="form-label fw-semibold" for="nombre">Nombre</label>
+        @Html.TextBox("nombre", Request["nombre"], new
+        {
+            @class = "form-control",
+            placeholder = "Escribe el nombre del producto",
+            id = "nombre"
+        })
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-search"></i> Buscar
+        </button>
+    </div>
+</form>
+
+
+<div id="resultados"></div>
+
+<script>
+    document.getElementById("formBusqueda").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const categoria = document.getElementById("categoria").value;
+        const nombre = document.getElementById("nombre").value;
+
+        fetch(`/Producto/TiendaJson?categoria=${categoria}&nombre=${nombre}&p=0`)
+            .then(res => res.json())
+            .then(data => {
+                let html = "<ul>";
+                data.productos.forEach(p => {
+                    html += `<li>${p.nombre} - ${p.precio}</li>`; // adapta a tus campos reales
+                });
+                html += "</ul>";
+                document.getElementById("resultados").innerHTML = html;
+            });
+    });
+</script>
+
+
+<div>
+    @for (int i = 0; i < (int)ViewBag.npags; i++)
+    {
+        @Html.ActionLink((i + 1).ToString(), "Tienda", new { p = i, categoria = ViewBag.categoria, nombre = ViewBag.nombre }, new { @class = "btn btn-secondary" })
+    }
+</div>
+
+<script src="~/Scripts/bundle.js"></script>
