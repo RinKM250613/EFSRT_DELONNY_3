@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import ProductoLista from "./components/ProductoLista";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
     const [productos, setProductos] = useState([]);
