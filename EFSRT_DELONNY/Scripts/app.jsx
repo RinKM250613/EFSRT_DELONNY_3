@@ -8,16 +8,18 @@ const App = () => {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        fetch("/Producto/ObtenerProductosGeneral")  // Action de tu controller
+        fetch("/Producto/ObtenerProductosGeneral")
             .then((res) => res.json())
             .then((data) => setProductos(data))
             .catch((err) => console.error("Error cargando productos:", err));
     }, []);
 
     return (
-        <div>      
-            <ProductoLista productos={productos} />
-            <Header></Header>
+        <div>
+            <Header />
+            <div className="container">
+                <ProductoLista productos={productos} />
+            </div>
         </div>
     );
 };
