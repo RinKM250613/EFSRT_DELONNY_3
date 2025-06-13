@@ -1,10 +1,10 @@
 ﻿const path = require('path');
 
 module.exports = {
-    entry: './Scripts/App.jsx', // ← tu archivo de entrada React
+    entry: './Scripts/App.jsx',
     output: {
-        path: path.resolve(__dirname, 'Scripts'), // ← misma carpeta para salida
-        filename: 'bundle.js' // ← el archivo que buscamos
+        path: path.resolve(__dirname, 'Scripts'),
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -12,6 +12,10 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.css$/i, // ← esto es lo nuevo
+                use: ['style-loader', 'css-loader']
             }
         ]
     },

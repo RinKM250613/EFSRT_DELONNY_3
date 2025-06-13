@@ -15,9 +15,9 @@ const App = () => {
     }, []);
 
     return (
-        <div>
-            <Header></Header>
+        <div>      
             <ProductoLista productos={productos} />
+            <Header></Header>
         </div>
     );
 };
