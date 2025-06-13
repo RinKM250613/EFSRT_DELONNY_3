@@ -2,6 +2,7 @@
 import ReactDOM from "react-dom/client";
 import ProductoLista from "./components/ProductoLista";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./components/Header";
 
 const App = () => {
     const [productos, setProductos] = useState([]);
@@ -15,6 +16,7 @@ const App = () => {
 
     return (
         <div>
+            <Header></Header>
             <ProductoLista productos={productos} />
         </div>
     );

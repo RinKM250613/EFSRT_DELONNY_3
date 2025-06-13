@@ -34,7 +34,6 @@
 
 
 <div id="resultados"></div>
-<div id="react-root"></div>
 
 <script>
     document.getElementById("formBusqueda").addEventListener("submit", function (e) {
@@ -46,17 +45,35 @@
         fetch(`/Producto/TiendaJson?categoria=${categoria}&nombre=${nombre}&p=0`)
             .then(res => res.json())
             .then(data => {
-                let html = "<ul>";
+                let html = '<div class="row">'; // Contenedor en rejilla Bootstrap
+
                 data.productos.forEach(p => {
-                    html += `<li>${p.nombre} - ${p.precio}</li>`; // Cambiar campos agregar foto nombre etxc
+                    html += `
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="${p.fotoRuta}" alt="${p.nombre}" 
+                             class="card-img-top mx-auto d-block"
+                             style="width: 150px; height: 150px; object-fit: cover; margin-top: 10px;" />
+                        <div class="card-body">
+                            <h5 class="card-title">${p.nombre}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${p.nomCat}</h6>
+                            <p class="card-text">${p.descripcion}</p>
+                            <p class="card-text"><strong>Precio:</strong> S/ ${p.precio}</p>
+                            <p class="card-text"><strong>Disponible:</strong> ${p.stock}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
                 });
-                html += "</ul>";
+
+                html += '</div>'; // Cierra la fila
+
                 document.getElementById("resultados").innerHTML = html;
             });
-    });
-</script>
 
-//ajustar la paginacion
+    });
+    //ajustar la paginacion abajooo
+</script>
 
 <div>
     @for (int i = 0; i < (int)ViewBag.npags; i++)

@@ -197,6 +197,8 @@ namespace EFSRT_DELONNY.Controllers
 
         public JsonResult TiendaJson(string categoria = "", string nombre = "", int p = 0)
         {
+            
+            
             Producto objProducto = new Producto
             {
                 codCategoria = categoria,

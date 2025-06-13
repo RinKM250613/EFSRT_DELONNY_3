@@ -198,7 +198,9 @@ namespace Infraestructura.SQL.Negocios
                                 precio = reader.GetDecimal(3),
                                 descripcion = reader.GetString(4),
                                 codCategoria = reader.GetString(5),
-                                codProveedor = reader.GetString(6)
+                                codProveedor = reader.GetString(6),
+                                fotoRuta = reader.GetString(7),
+                                nomCat = reader.GetString(8)
                             });
                         }
                     }

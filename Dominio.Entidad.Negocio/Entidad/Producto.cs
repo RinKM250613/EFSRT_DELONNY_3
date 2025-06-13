@@ -28,6 +28,7 @@ namespace Dominio.Entidad.Negocio.Entidad
 
         // Mantén esta propiedad para guardar la ruta o nombre de la imagen en la BD
         public string fotoRuta { get; set; }
+        public string nomCat { get; set; }
 
     }
 }

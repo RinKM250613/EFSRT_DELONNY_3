@@ -1,0 +1,11 @@
+﻿.text-orange {
+    color: #ea580c !important;
+}
+
+.bg-orange {
+    background-color: #ea580c !important;
+}
+
+.hover-orange:hover {
+    color: #ea580c !important;
+}

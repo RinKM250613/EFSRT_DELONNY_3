@@ -155,6 +155,7 @@
     <Content Include="Content\Estilos_Generales.css" />
     <Content Include="Content\Estilos_Listado.css" />
     <Content Include="Content\Estilos_Crear.css" />
+    <Content Include="Content\Estilos_Tienda.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -170,6 +171,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Scripts\components\Header.jsx" />
     <Content Include="Scripts\components\ProductoItem.jsx" />
     <Content Include="Scripts\components\ProductoLista.jsx" />
     <Content Include="webpack.config.js" />
@@ -220,7 +222,6 @@
     <Content Include="Views\Reporte\DescargarPDFVentas.cshtml" />
     <Content Include="Views\Reporte\ReporteFechas.cshtml" />
     <Content Include="Views\Reporte\DescargarPDFFechas.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Producto\Tienda.cshtml" />
   </ItemGroup>
   <ItemGroup>
